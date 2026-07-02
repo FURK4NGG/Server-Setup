@@ -23,22 +23,6 @@ File Zilla(For upload your website documents to server)
 
 -SETUP-  
 
-cat /etc/os-release  
-hostnamectl  
-hostname -I  
-ip a  
-timedatectl  
-
--test those-  
-
-Debian 12  
-IPv4  
-IPv6  
-Saat doğru mu  
-Network doğru mu  
-
-
-
 ssh root@SUNUCU_IP  
 
 apt update && apt full-upgrade -y  
@@ -61,3 +45,27 @@ apt update
 apt full-upgrade -y  
 apt autoremove -y  
 reboot  
+
+
+cat /etc/os-release  
+hostnamectl  
+hostname -I  
+ip a  
+timedatectl  
+
+-test those-  
+
+Debian 12  
+IPv4  
+IPv6  
+Saat doğru mu  
+Network doğru mu  
+
+
+-CLOUDFLARE-  
+Sign In into cloudflare and chose DNS Records>Connect a Domain  
+Configure AI training & search policies:
+Search:Allow  
+Agent:Allow  
+Training:Block  
+Import DNS Records:Manual only
