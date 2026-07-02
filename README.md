@@ -94,3 +94,41 @@ Pair Drop -> pair.domain
 FressRSS -> rss.domain  
 Only Office -> docs.domain  
 Umami -> visitors.domain  
+
+
+
+-Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
+sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
+index index.php index.html; --> index index.html index.htm;  
+
+
+index index.php index.html; --> index index.html index.htm;  
+
+try_files $uri $uri/ /index.php?$args =404; --> try_files $uri $uri/ $uri.html =404;  
+
+```
+location = /favicon.ico {
+    log_not_found off;
+    access_log off;
+}
+
+location = /robots.txt {
+    allow all;
+    log_not_found off;
+    access_log off;
+}
+
+location /maintenance/ {
+    deny all;
+}
+
+location ~ ^/(.+/|)\.(?!well-known/) {
+    deny all;
+}
+```
+
+Test  
+sudo nginx -t  
+
+if its ok  
+sudo systemctl reload nginx  or  sudo systemctl restart nginx  
