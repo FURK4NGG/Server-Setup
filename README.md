@@ -77,6 +77,9 @@ TXT domain "v=spf1 a mx -all"
 TXT _dmarc "v=DMARC1; p=none"  
 TXT mail._domainkey "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
 
+A rss IPV4  
+AAAA rss IPV6  
+
 
 In your domain provider,update your nameserver based on cloudflare nameserver such as 'kim.ns.cloudflare.com' and 'mack.ns.cloudflare.com'  
 
