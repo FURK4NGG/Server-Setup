@@ -127,6 +127,13 @@ location ~ ^/(.+/|)\.(?!well-known/) {
 }
 ```
 
+sudo nano /etc/nginx/conf.d/furk4ngg.me.d/my_webapp.d/custom_headers.conf  
+```
+add_header Referrer-Policy "no-referrer-when-downgrade" always;
+add_header Cross-Origin-Opener-Policy "same-origin" always;
+add_header Cross-Origin-Resource-Policy "same-origin" always;
+```
+
 Test  
 sudo nginx -t  
 
