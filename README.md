@@ -96,6 +96,9 @@ Only Office -> docs.domain
 Umami -> visitors.domain  
 
 
+-Permissions-
+my_webapp ->visitors,all  
+
 
 -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
 sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
