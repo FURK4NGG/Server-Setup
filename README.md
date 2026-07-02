@@ -16,7 +16,7 @@ terminal:
 vncviewer <vnc_ip>:<vnc_port>  
 enter the vnc password(max 8 character)  
 
-<br>
+
 Enter your user:root and password:server password  
 apt update  
 apt full-upgrade -y    
