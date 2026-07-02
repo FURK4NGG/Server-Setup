@@ -19,5 +19,5 @@ enter the vnc password(max 8 character)
 <br>
 Enter your user:root and password:server password  
 apt update  
-apt full-upgrade -y  
-reboot
+apt full-upgrade -y    
+reboot  
