@@ -143,3 +143,6 @@ sudo nginx -t
 
 if its ok  
 sudo systemctl reload nginx  or  sudo systemctl restart nginx  
+
+
+sudo yunohost domain cert install  
