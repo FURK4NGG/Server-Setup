@@ -68,4 +68,7 @@ Configure AI training & search policies:
 Search:Allow  
 Agent:Allow  
 Training:Block  
-Import DNS Records:Manual only
+Import DNS Records:Manual only  
+A domain IPV4  
+AAAA domain IPV6  
+CNAME www furk4ngg.me  
