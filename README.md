@@ -72,3 +72,6 @@ Import DNS Records:Manual only
 A domain IPV4  
 AAAA domain IPV6  
 CNAME www furk4ngg.me  
+
+
+In your domain provider,update your nameserver based on cloudflare nameserver such as 'kim.ns.cloudflare.com' and 'mack.ns.cloudflare.com'  
