@@ -11,7 +11,7 @@ Run your 'html,css,js' page(my_webapp)
 Store Files,Notes,Calendar,Forms,Photos and OnlyOffice(Nextcloud,OnlyOffice)  
 Local file sharing(PairDrop)  
 Realtime website analytics(Umami)  
-Realtime apps(web urls) monitoring(Uptime Kuma)  
+Realtime apps'web urls' monitoring(Uptime Kuma)  
 File convertion utility(Vert)  
 
 vpn  
