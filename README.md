@@ -12,11 +12,11 @@ apt install -y curl wget sudo gnupg2 ca-certificates
 
 ya da 
 
-terminal:
+terminal:  
 vncviewer <vnc_ip>:<vnc_port>  
 enter the vnc password(max 8 character)  
 
-<br><br>
+<br>
 Enter your user:root and password:server password  
 apt update  
 apt full-upgrade -y  
