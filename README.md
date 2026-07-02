@@ -21,6 +21,21 @@ Real VNC Viewer(For connecting to server easily)
 File Zilla(For upload your website documents to server)  
 
 
+-SETUP-  
+
+cat /etc/os-release  
+hostnamectl  
+hostname -I  
+ip a  
+timedatectl  
+
+-test those-  
+
+Debian 12  
+IPv4  
+IPv6  
+Saat doğru mu  
+Network doğru mu  
 
 
 
@@ -43,5 +58,6 @@ enter the vnc password(max 8 character)
 
 Enter your user:root and password:server password  
 apt update  
-apt full-upgrade -y    
+apt full-upgrade -y  
+apt autoremove -y  
 reboot  
