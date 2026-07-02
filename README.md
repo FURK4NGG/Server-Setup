@@ -72,6 +72,10 @@ Import DNS Records:Manual only
 A domain IPV4  
 AAAA domain IPV6  
 CNAME www furk4ngg.me  
+MX domain domain (Priority 10)  
+TXT domain "v=spf1 a mx -all"  
+TXT _dmarc "v=DMARC1; p=none"  
+TXT mail._domainkey "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
 
 
 In your domain provider,update your nameserver based on cloudflare nameserver such as 'kim.ns.cloudflare.com' and 'mack.ns.cloudflare.com'  
