@@ -75,4 +75,9 @@ CNAME www furk4ngg.me
 
 
 In your domain provider,update your nameserver based on cloudflare nameserver such as 'kim.ns.cloudflare.com' and 'mack.ns.cloudflare.com'  
+
 hostnamectl set-hostname domain  
+
+apt update && apt full-upgrade -y  
+
+curl https://install.yunohost.org | bash  
