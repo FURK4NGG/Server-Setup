@@ -98,6 +98,7 @@ Umami -> visitors.domain
 
 -Permissions-
 my_webapp ->visitors,all  
+Pair Drop -> Tum yunohist yoneticileri  
 
 
 -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
