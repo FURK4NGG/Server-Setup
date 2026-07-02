@@ -81,3 +81,16 @@ hostnamectl set-hostname domain
 apt update && apt full-upgrade -y  
 
 curl https://install.yunohost.org | bash  
+
+Localden yunohost islmelerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
+Nextcloud -> cloud.domain  
+Vert -> convert.domain  
+Gitea -> git.domain  
+Uptime Kuma -> uptime.domain  
+Glances -> usage.domain  
+Element -> chat.domain and Synapse -> syn.domain  
+Lufi -> lufi.domain  
+Pair Drop -> pair.domain  
+FressRSS -> rss.domain  
+Only Office -> docs.domain  
+Umami -> visitors.domain  
