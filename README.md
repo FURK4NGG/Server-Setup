@@ -20,6 +20,8 @@ mailserver
 Real VNC Viewer(For connecting to server easily)  
 File Zilla(For upload your website documents to server)  
 
+DNS LOOKUP and google PageSpeed Insights  
+
 
 -SETUP-  
 
