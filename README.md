@@ -107,7 +107,8 @@ Umami -> visitors.domain
 my_webapp ->visitors,all  
 Pair Drop -> Tum yunohist yoneticileri  
 Glances -> Tum yunohost kullanicilari  
-Lufi -> Tum yunohost kullanicilari
+Lufi -> Tum yunohost kullanicilari  
+Vert -> Tum yunohost kullanicilari  
 
 
 
