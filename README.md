@@ -92,6 +92,7 @@ apt update && apt full-upgrade -y
 curl https://install.yunohost.org | bash  
 
 Localden yunohost islemlerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
+my_webapp -> domain  
 Nextcloud -> cloud.domain  
 Vert -> convert.domain  
 Gitea -> git.domain  
