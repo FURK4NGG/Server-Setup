@@ -106,11 +106,16 @@ Umami -> visitors.domain
 
 
 -Permissions-  
-my_webapp ->visitors,all  
-Pair Drop -> Tum yunohist yoneticileri  
-Glances -> Tum yunohost kullanicilari  
-Lufi -> Tum yunohost kullanicilari  
-Vert -> Tum yunohost kullanicilari
+
+
+Glances -> allusers(Tum yunohost kullanicilari)  
+Lufi -> allusers(Tum yunohost kullanicilari)  
+my_webapp -> visitors,all  
+Pair Drop -> allusers(Tum yunohost kullanicilari)  
+Umami(visitors.domain) -> allusers(Tum yunohost kullanicilari)  
+Uptime Kuma -> allusers(Tum yunohost kullanicilari)  
+Vert -> allusers(Tum yunohost kullanicilari)  
+
 
 Display tile in portal -> (Yes)  
 
