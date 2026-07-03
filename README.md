@@ -175,3 +175,6 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 -Lufi Ayarlari-  
 Install Lufi with LDAP configuration? -> (Yes)  
+
+-Uptime Kuma-  
+Choose SQLite database  
