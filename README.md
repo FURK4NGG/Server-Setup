@@ -106,6 +106,26 @@ Umami -> visitors.domain
 -Permissions-  
 my_webapp ->visitors,all  
 Pair Drop -> Tum yunohist yoneticileri  
+Glances -> Tum yunohost kullanicilari  
+Lufi -> Tum yunohost kullanicilari
+
+
+
+
+-URL CERTIFICATES-
+
+✅ DNS A kaydı doğru.  
+✅ DNS AAAA kaydı doğru.  
+✅ Nameserver'lar değiştirildi.  
+✅ HTTP reachable from outside.  
+✅ Nginx çalışıyor.  
+✅ Let's Encrypt API'sine sunucu bağlanabiliyor.  
+✅ Cloudflare proxy kapalı (DNS only).  
+Nameserver değişikliğinin tamamen yayılmamış olmasının ardından,  
+
+sudo yunohost domain cert install  
+
+
 
 
 -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
@@ -148,15 +168,7 @@ sudo nginx -t
 if its ok  
 sudo systemctl reload nginx  or  sudo systemctl restart nginx  
 
--URL CERTIFICATES-
 
-✅ DNS A kaydı doğru.  
-✅ DNS AAAA kaydı doğru.  
-✅ Nameserver'lar değiştirildi.  
-✅ HTTP reachable from outside.  
-✅ Nginx çalışıyor.  
-✅ Let's Encrypt API'sine sunucu bağlanabiliyor.  
-✅ Cloudflare proxy kapalı (DNS only).  
-Nameserver değişikliğinin tamamen yayılmamış olmasının ardından,  
 
-sudo yunohost domain cert install  
+-Lufi Ayarlari-  
+Install Lufi with LDAP configuration? -> (Yes)  
