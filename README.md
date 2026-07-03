@@ -110,6 +110,7 @@ Umami -> visitors.domain
 Element -> all_users(Tum yunohost kullanicilari)  
 Synapse -> all_users(Tum yunohost kullanicilari)  
 Glances -> all_users(Tum yunohost kullanicilari)  
+Gitea -> visitors,all_users  
 Lufi -> all_users(Tum yunohost kullanicilari)  
 my_webapp -> visitors,all_users  
 Pair Drop -> all_users(Tum yunohost kullanicilari)  
@@ -204,3 +205,10 @@ syn.domain/_synapse -> visitors
 syn.domain/livekit -> visitors  
 syn.domain/_matrix -> visitors  
 syn.domain/.well-known/matrix -> visitors  
+
+-Gitea Ayarlari-  
+Enable LFS support on this instance -> (Yes)  
+Enable support hover SSH protocol -> (Yes)  
+git.domain -> all_users,visitors  
+admin -> admins  
+git.domain.megit.furk4ngg.me/v2 -> visitors  
