@@ -107,14 +107,15 @@ Umami -> visitors.domain
 
 -Permissions-  
 
-
-Glances -> allusers(Tum yunohost kullanicilari)  
-Lufi -> allusers(Tum yunohost kullanicilari)  
-my_webapp -> visitors,all  
-Pair Drop -> allusers(Tum yunohost kullanicilari)  
-Umami(visitors.domain) -> allusers(Tum yunohost kullanicilari)  
-Uptime Kuma -> allusers(Tum yunohost kullanicilari)  
-Vert -> allusers(Tum yunohost kullanicilari)  
+Element -> all_users(Tum yunohost kullanicilari)  
+Synapse -> all_users(Tum yunohost kullanicilari)  
+Glances -> all_users(Tum yunohost kullanicilari)  
+Lufi -> all_users(Tum yunohost kullanicilari)  
+my_webapp -> visitors,all_users  
+Pair Drop -> all_users(Tum yunohost kullanicilari)  
+Umami(visitors.domain) -> all_users(Tum yunohost kullanicilari)  
+Uptime Kuma -> all_users(Tum yunohost kullanicilari)  
+Vert -> all_users(Tum yunohost kullanicilari)  
 
 
 Display tile in portal -> (Yes)  
@@ -187,7 +188,19 @@ Install Lufi with LDAP configuration? -> (Yes)
 Choose SQLite database  
 
 -Umami Ayarlari-  
-visitors.domain -> allusers  
+visitors.domain -> all_users  
 visitors.domain/api -> visitors  
 visitors.domain/recorder -> visitors  
 visitors.domain/script -> visitors  
+
+
+-Element Ayarlari-  
+Enable fedration features by default -> (Yes)  
+chat.domain -> all_users  
+chat.domain/bundles -> visitors  
+
+syn.domain -> all_users  
+syn.domain/_synapse -> visitors  
+syn.domain/livekit -> visitors  
+syn.domain/_matrix -> visitors  
+syn.domain/.well-known/matrix -> visitors  
