@@ -81,7 +81,7 @@ A rss IPV4
 AAAA rss IPV6  
 
 
-In your domain provider,update your nameserver based on cloudflare nameserver such as 'kim.ns.cloudflare.com' and 'mack.ns.cloudflare.com'  
+In your domain provider,update your nameserver based on cloudflare nameserver such as 'sam.ns.cloudflare.com' and 'kack.ns.cloudflare.com'  
 
 hostnamectl set-hostname domain  
 
@@ -89,7 +89,7 @@ apt update && apt full-upgrade -y
 
 curl https://install.yunohost.org | bash  
 
-Localden yunohost islmelerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
+Localden yunohost islemlerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
 Nextcloud -> cloud.domain  
 Vert -> convert.domain  
 Gitea -> git.domain  
@@ -103,16 +103,13 @@ Only Office -> docs.domain
 Umami -> visitors.domain  
 
 
--Permissions-
+-Permissions-  
 my_webapp ->visitors,all  
 Pair Drop -> Tum yunohist yoneticileri  
 
 
 -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
 sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
-index index.php index.html; --> index index.html index.htm;  
-
-
 index index.php index.html; --> index index.html index.htm;  
 
 try_files $uri $uri/ /index.php?$args =404; --> try_files $uri $uri/ $uri.html =404;  
