@@ -153,13 +153,13 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 -URL CERTIFICATES-
 
-✅ DNS A kaydı doğru.
-✅ DNS AAAA kaydı doğru.
-✅ Nameserver'lar değiştirildi.
-✅ HTTP reachable from outside.
-✅ Nginx çalışıyor.
-✅ Let's Encrypt API'sine sunucu bağlanabiliyor.
-✅ Cloudflare proxy kapalı (DNS only).
-Nameserver değişikliğinin tamamen yayılmamış olmasının ardından,
+✅ DNS A kaydı doğru.  
+✅ DNS AAAA kaydı doğru.  
+✅ Nameserver'lar değiştirildi.  
+✅ HTTP reachable from outside.  
+✅ Nginx çalışıyor.  
+✅ Let's Encrypt API'sine sunucu bağlanabiliyor.  
+✅ Cloudflare proxy kapalı (DNS only).  
+Nameserver değişikliğinin tamamen yayılmamış olmasının ardından,  
 
 sudo yunohost domain cert install  
