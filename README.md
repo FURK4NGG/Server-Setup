@@ -110,7 +110,9 @@ my_webapp ->visitors,all
 Pair Drop -> Tum yunohist yoneticileri  
 Glances -> Tum yunohost kullanicilari  
 Lufi -> Tum yunohost kullanicilari  
-Vert -> Tum yunohost kullanicilari  
+Vert -> Tum yunohost kullanicilari
+
+Display tile in portal -> (Yes)  
 
 
 
@@ -178,3 +180,9 @@ Install Lufi with LDAP configuration? -> (Yes)
 
 -Uptime Kuma-  
 Choose SQLite database  
+
+-Umami Ayarlari-  
+visitors.domain -> allusers  
+visitors.domain/api -> visitors  
+visitors.domain/recorder -> visitors  
+visitors.domain/script -> visitors  
