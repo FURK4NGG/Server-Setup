@@ -1,7 +1,7 @@
 # Server-Setup
 
 *Terminal icerisinde yukari asagi yapmak icin 'Shift+Page_Up' ve 'Shift+Page_Down' tuslarini kullanabilirsin*  
-*'sudo dmesg -D' kodu ile terminale yazirilan auid yazilarini o oturun icin kisa sureli durdurur*  
+*'sudo dmesg -D' kodu ile terminale yazirilan auid yazilarini o oturum icin kisa sureli durdurur*  
 
 BASE(Yunohost)  
 
