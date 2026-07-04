@@ -220,3 +220,6 @@ git.domain.megit.furk4ngg.me/v2 -> visitors
 
 -Lime Survey-  
 forms.domain/admin -> admin page  
+
+-LimeSurvey Ayarlari-  
+https://forms.domain/index.php/dashboard/view
