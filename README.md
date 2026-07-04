@@ -59,7 +59,7 @@ timedatectl
 
 Debian 12  
 IPv4  
-IPv6  
+IPv6 (inet6 2a01:c303:2456:2954::1/64 scope global, ipv6 is 2a01:c303:2456:2954::1)  
 Saat doğru mu  
 Network doğru mu  
 
