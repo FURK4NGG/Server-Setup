@@ -213,3 +213,7 @@ Enable support hover SSH protocol -> (Yes)
 git.domain -> all_users,visitors  
 admin -> admins  
 git.domain.megit.furk4ngg.me/v2 -> visitors  
+
+
+-Lime Survey-  
+forms.domain/admin -> admin page  
