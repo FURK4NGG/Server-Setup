@@ -223,3 +223,6 @@ forms.domain/admin -> admin page
 
 -LimeSurvey Ayarlari-  
 https://forms.domain/index.php/dashboard/view
+
+-NextCloud Ayarlari-  
+Add the users' home directory in Nextcloud? -> (No)  
