@@ -290,7 +290,10 @@ In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to d
 
 
 DKIM 1024 bit uyarısı
-
+sudo opendkim-testkey -d furk4ngg.me -s mail -vvv
+1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
+2048 bit starts with MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...  
+/baska maillerden yonlendirme hesabi/
 
 sudo systemctl status postfix --no-pager  
 sudo ss -tlnp | grep -E ":25|:465|:587"  
