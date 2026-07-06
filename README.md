@@ -230,6 +230,11 @@ Add the users' home directory in Nextcloud? -> (No)
 -OnlyOffice Setup-  
 Server settings successfully updated doğrula.  
 healthcheck ve api.js kontrol et.  
+```
+sudo yunohost service status | grep -i onlyoffice
+curl https://docs.furk4ngg.me/healthcheck
+curl -I https://docs.furk4ngg.me/web-apps/apps/api/documents/api.js
+```
 Secret key eşitliğini doğrula.  
 ```
 sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
@@ -255,11 +260,7 @@ occ dogrula
 sudo -i
 php /var/www/nextcloud/occ status
 ```
-```
-sudo yunohost service status | grep -i onlyoffice
-curl https://docs.furk4ngg.me/healthcheck
-curl -I https://docs.furk4ngg.me/web-apps/apps/api/documents/api.js
-```
+
 son teşhis
 ```
 sudo tail -100 /var/log/onlyoffice/docservice.log
