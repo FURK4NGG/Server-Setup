@@ -274,3 +274,4 @@ CTRL + F5
 
 -Mail Ayarlari-  
 sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
+In your Server Hosting(Reverse DNS Management)  
