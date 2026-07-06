@@ -250,6 +250,10 @@ sudo systemctl restart php8.2-fpm
 php -m | grep -E "SimpleXML|mbstring|zip|gd|curl"
 ```
 occ dogrula  
+```
+sudo -i
+php /var/www/nextcloud/occ status
+```
 
 Yeni belge aç.  
 Sonsuz yüklenme varsa ilk iş F12 → Console aç.  
