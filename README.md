@@ -226,3 +226,10 @@ https://forms.domain/index.php/dashboard/view
 
 -NextCloud Ayarlari-  
 Add the users' home directory in Nextcloud? -> (No)  
+
+-OnlyOffice Setup-  
+sudo apt update
+sudo apt install php8.2-xml
+sudo apt install php8.2-xml php8.2-mbstring
+sudo apt install php8.2-xml php8.2-mbstring php8.2-zip php8.2-gd php8.2-curl
+sudo systemctl restart php8.2-fpm
