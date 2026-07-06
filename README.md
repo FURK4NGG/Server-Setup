@@ -231,6 +231,9 @@ Add the users' home directory in Nextcloud? -> (No)
 Server settings successfully updated doğrula.  
 healthcheck ve api.js kontrol et.  
 Secret key eşitliğini doğrula.  
+```
+sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
+```
 SSL sertifikası  
 curl testleri  
 ```
@@ -243,8 +246,6 @@ php /var/www/nextcloud/occ app:list | grep -i "onlyoffice\|richdocuments\|richdo
 ```
 ```
 sudo apt update
-sudo apt install php8.2-xml
-sudo apt install php8.2-xml php8.2-mbstring
 sudo apt install php8.2-xml php8.2-mbstring php8.2-zip php8.2-gd php8.2-curl
 sudo systemctl restart php8.2-fpm
 php -m | grep -E "SimpleXML|mbstring|zip|gd|curl"
@@ -253,6 +254,15 @@ occ dogrula
 ```
 sudo -i
 php /var/www/nextcloud/occ status
+```
+```
+sudo yunohost service status | grep -i onlyoffice
+curl https://docs.furk4ngg.me/healthcheck
+curl -I https://docs.furk4ngg.me/web-apps/apps/api/documents/api.js
+```
+son teşhis
+```
+sudo tail -100 /var/log/onlyoffice/docservice.log
 ```
 
 Yeni belge aç.  
