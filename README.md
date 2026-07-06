@@ -278,3 +278,6 @@ In your Server Hosting change (Reverse DNS Management>PTR Records)
 
 
 CAA issue "letsencrypt.org"
+
+https://dmarcdkim.com/tools/check-dkim-record?domain=furk4ngg.me
+DKIM 1024 bit uyarısı
