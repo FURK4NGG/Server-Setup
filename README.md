@@ -269,7 +269,6 @@ sudo tail -100 /var/log/onlyoffice/docservice.log
 Yeni belge aç.  
 Sonsuz yüklenme varsa ilk iş F12 → Console aç.  
 Analytics.js yüklenemiyor görülürse:  
-Firefox Enhanced Tracking Protection'ı kapat veya  
-uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
+    Firefox Enhanced Tracking Protection'ı kapat veya uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
 CTRL + F5  
 
