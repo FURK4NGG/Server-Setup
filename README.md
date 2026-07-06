@@ -77,10 +77,9 @@ Import DNS Records:Manual only
 A domain IPV4  
 AAAA domain IPV6  
 CNAME www furk4ngg.me  
-MX domain domain (Priority 10)  
-TXT domain "v=spf1 a mx -all"  
-TXT _dmarc "v=DMARC1; p=none"  
-TXT mail._domainkey "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
+A * IPV4  
+AAAA * IPV6  
+
 
 A rss IPV4  
 AAAA rss IPV6  
@@ -273,13 +272,24 @@ Analytics.js yüklenemiyor görülürse:
 CTRL + F5  
 
 -Mail Ayarlari-  
+(Cloudflare)
+MX domain domain (Priority 10)  
+TXT domain "v=spf1 a mx -all"  
+TXT _dmarc "v=DMARC1; p=none"  
+TXT mail._domainkey "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
+CAA domain issue "letsencrypt.org"  
+
+
+sudo yunohost diagnosis run
+
 sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
-In your Server Hosting change (Reverse DNS Management>PTR Records)  
+In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to domain))  
 
 
-CAA issue "letsencrypt.org"
 
-https://dmarcdkim.com/tools/check-dkim-record?domain=domain
+
+
+
 DKIM 1024 bit uyarısı
 
 
@@ -287,3 +297,10 @@ sudo systemctl status postfix --no-pager
 sudo ss -tlnp | grep -E ":25|:465|:587"
 openssl s_client -connect domain:465 -brief
 openssl s_client -starttls smtp -connect domain:587 -brief
+
+https://dmarcdkim.com/tools/check-dkim-record?domain=domain
+https://www.mail-tester.com/
+https://mxtoolbox.com/SuperTool.aspx
+
+
+You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail
