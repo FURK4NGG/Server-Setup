@@ -272,3 +272,5 @@ Analytics.js yüklenemiyor görülürse:
     Firefox Enhanced Tracking Protection'ı kapat veya uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
 CTRL + F5  
 
+-Mail Ayarlari-  
+sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
