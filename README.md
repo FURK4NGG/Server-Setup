@@ -279,5 +279,11 @@ In your Server Hosting change (Reverse DNS Management>PTR Records)
 
 CAA issue "letsencrypt.org"
 
-https://dmarcdkim.com/tools/check-dkim-record?domain=furk4ngg.me
+https://dmarcdkim.com/tools/check-dkim-record?domain=domain
 DKIM 1024 bit uyarısı
+
+
+sudo systemctl status postfix --no-pager
+sudo ss -tlnp | grep -E ":25|:465|:587"
+openssl s_client -connect domain:465 -brief
+openssl s_client -starttls smtp -connect domain:587 -brief
