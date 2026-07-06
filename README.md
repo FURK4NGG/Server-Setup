@@ -232,8 +232,8 @@ Server settings successfully updated doğrula.
 healthcheck ve api.js kontrol et.  
 ```
 sudo yunohost service status | grep -i onlyoffice
-curl https://docs.furk4ngg.me/healthcheck
-curl -I https://docs.furk4ngg.me/web-apps/apps/api/documents/api.js
+curl https://docs.domain/healthcheck
+curl -I https://docs.domain/web-apps/apps/api/documents/api.js
 ```
 Secret key eşitliğini doğrula.  
 ```
