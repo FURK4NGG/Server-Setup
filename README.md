@@ -272,6 +272,9 @@ son teşhis
 sudo tail -100 /var/log/onlyoffice/docservice.log
 ```
 
+ptr test  
+dig -x IPV4 +short  
+
 Yeni belge aç.  
 Sonsuz yüklenme varsa ilk iş F12 → Console aç.  
 Analytics.js yüklenemiyor görülürse:  
@@ -299,7 +302,6 @@ In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to d
 
 DKIM 1024 bit uyarısı  
 sudo opendkim-testkey -d domain -s mail -vvv  
-dig -x IPV4 +short  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
 2048 bit starts with MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...  
 
