@@ -343,7 +343,7 @@ Require verification: ON
 Allow self signed: OFF  
 
 
-#SMTP SETTINGS
+# SMTP SETTINGS
 Server: domain  
 
 Port: 587  
