@@ -74,6 +74,7 @@ Search:Allow
 Agent:Allow  
 Training:Block  
 Import DNS Records:Manual only  
+*All Records should be DNS only*  
 A domain IPV4  
 AAAA domain IPV6  
 CNAME www furk4ngg.me  
@@ -280,6 +281,7 @@ CTRL + F5
 
 # -Mail Ayarlari-  
 (Cloudflare)  
+*All Records should be DNS only*  
 MX domain    mail.domain (Priority 10)  
 TXT domain    "v=spf1 a mx -all"  
 TXT _dmarc    "v=DMARC1; p=none"  
