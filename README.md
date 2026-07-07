@@ -290,9 +290,10 @@ In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to d
 
 
 DKIM 1024 bit uyarısı  
-sudo opendkim-testkey -d furk4ngg.me -s mail -vvv  
+sudo opendkim-testkey -d domain -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
 2048 bit starts with MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...  
+
 /baska maillerden yonlendirme hesabi/
 
 sudo systemctl status postfix --no-pager  
@@ -302,12 +303,17 @@ openssl s_client -starttls smtp -connect domain:587 -brief
 
 https://dmarcdkim.com/tools/check-dkim-record?domain=domain  
 https://www.mail-tester.com/  
-https://mxtoolbox.com/SuperTool.aspx  
+and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
+SPF Test -> https://mxtoolbox.com/spf.aspx
+SEO TEST -> https://www.seobility.net/en/seocheck/  
 
 If its all good  
+dmarc@domain diye yeni hesap acmali yunohostta 
+TXT _dmarc "v=DMARC1; p=none; rua=mailto:dmarc@furk4ngg.me"
 TXT _dmarc "v=DMARC1; p=reject"  
 
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
 
 
+Maillerin Yunohost/Users icinde gozukur  
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail
