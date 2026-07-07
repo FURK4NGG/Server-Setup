@@ -304,7 +304,8 @@ openssl s_client -starttls smtp -connect domain:587 -brief
 https://dmarcdkim.com/tools/check-dkim-record?domain=domain  
 https://www.mail-tester.com/  
 and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
-SPF Test -> https://mxtoolbox.com/spf.aspx
+SPF Test -> https://mxtoolbox.com/spf.aspx  
+Domain Health Report -> https://mxtoolbox.com/emailhealth/  
 SEO TEST -> https://www.seobility.net/en/seocheck/  
 
 If its all good  
