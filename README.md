@@ -26,7 +26,7 @@ File Zilla(For upload your website documents to server)
 DNS LOOKUP and google PageSpeed Insights  
 
 
--SETUP-  
+# -SETUP-  
 
 ssh root@SUNUCU_IP  
 
@@ -67,7 +67,7 @@ Saat doğru mu
 Network doğru mu  
 
 
--CLOUDFLARE-  
+# -CLOUDFLARE-  
 Sign In into cloudflare and chose DNS Records>Connect a Domain  
 Configure AI training & search policies:
 Search:Allow  
@@ -110,7 +110,7 @@ Vert -> convert.domain
 
 
 
--Permissions-  
+# -App Permissions-  
 *visitors(Ziyaretçiler)* *all_users(Tum yunohost kullanicilari)*
 
 Element -> all_users  
@@ -134,7 +134,7 @@ Display tile in portal -> (Yes)
 
 
 
--URL CERTIFICATES-
+# -URL CERTIFICATES-
 
 ✅ DNS A kaydı doğru.  
 ✅ DNS AAAA kaydı doğru.  
@@ -150,7 +150,7 @@ sudo yunohost domain cert install
 
 
 
--Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
+# -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
 sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
 index index.php index.html; --> index index.html index.htm;  
 
@@ -192,20 +192,20 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 
 
--Lufi Ayarlari-  
+# -Lufi Ayarlari-  
 Install Lufi with LDAP configuration? -> (Yes)  
 
--Uptime Kuma-  
+# -Uptime Kuma-  
 Choose SQLite database  
 
--Umami Ayarlari-  
+# -Umami Ayarlari-  
 visitors.domain -> all_users  
 visitors.domain/api -> visitors  
 visitors.domain/recorder -> visitors  
 visitors.domain/script -> visitors  
 
 
--Element Ayarlari-  
+# -Element Ayarlari-  
 Enable fedration features by default -> (Yes)  
 chat.domain -> all_users  
 chat.domain/bundles -> visitors  
@@ -216,7 +216,7 @@ syn.domain/livekit -> visitors
 syn.domain/_matrix -> visitors  
 syn.domain/.well-known/matrix -> visitors  
 
--Gitea Ayarlari-  
+# -Gitea Ayarlari-  
 Enable LFS support on this instance -> (Yes)  
 Enable support hover SSH protocol -> (Yes)  
 git.domain -> all_users,visitors  
@@ -224,16 +224,14 @@ admin -> admins
 git.domain.megit.furk4ngg.me/v2 -> visitors  
 
 
--Lime Survey-  
+# -Lime Survey-  
 forms.domain/admin -> admin page  
-
--LimeSurvey Ayarlari-  
 https://forms.domain/index.php/dashboard/view
 
--NextCloud Ayarlari-  
+# -NextCloud Ayarlari-  
 Add the users' home directory in Nextcloud? -> (No)  
 
--OnlyOffice Setup-  
+# -OnlyOffice Setup-  
 Server settings successfully updated doğrula.  
 healthcheck ve api.js kontrol et.  
 ```
@@ -280,7 +278,7 @@ Analytics.js yüklenemiyor görülürse:
     Firefox Enhanced Tracking Protection'ı kapat veya uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
 CTRL + F5  
 
--Mail Ayarlari-  
+# -Mail Ayarlari-  
 (Cloudflare)  
 MX domain    mail.domain (Priority 10)  
 TXT domain    "v=spf1 a mx -all"  
