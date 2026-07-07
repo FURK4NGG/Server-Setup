@@ -318,7 +318,7 @@ SEO TEST -> https://www.seobility.net/en/seocheck/
 
 If its all good  
 dmarc@domain diye yeni hesap acmali yunohostta  
-TXT _dmarc "v=DMARC1; p=none; rua=mailto:dmarc@furk4ngg.me"  
+TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
 
 
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
