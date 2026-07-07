@@ -272,8 +272,7 @@ son teşhis
 sudo tail -100 /var/log/onlyoffice/docservice.log
 ```
 
-ptr test  
-dig -x IPV4 +short  
+
 
 Yeni belge aç.  
 Sonsuz yüklenme varsa ilk iş F12 → Console aç.  
@@ -296,7 +295,8 @@ sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"
 In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to domain))  
 
 
-
+ptr test  
+dig -x IPV4 +short  
 
 
 
