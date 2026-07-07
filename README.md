@@ -304,5 +304,8 @@ https://dmarcdkim.com/tools/check-dkim-record?domain=domain
 https://www.mail-tester.com/  
 https://mxtoolbox.com/SuperTool.aspx  
 
+If its all good  
+TXT _dmarc "v=DMARC1; p=reject"  
+
 
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail
