@@ -300,6 +300,73 @@ dig -x IPV4 +short
 
 
 
+sudo postconf myhostname  
+sudo grep -R "mail.domain" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null  
+
+sudo ss -tln | grep -E ":143|:993"  
+>143 → IMAP + STARTTLS  
+>993 → IMAPS (SSL/TLS)  
+
+
+sudo ss -tln | grep -E ":25|:465|:587"  
+>✅ 25  
+>❌ 465  
+>✅ 587  
+
+
+openssl s_client -starttls smtp -connect domain:587  
+>Verify return code: 0 (ok)
+
+openssl s_client -connect domain:993  
+openssl s_client -starttls imap -connect domain:143  
+
+doveadm auth test furk4ngg@domain  
+>auth succeeded
+
+
+postmap -q "furk4ngg@domain" ldap:/etc/postfix/ldap-accounts.cf  
+
+
+# IMAP SETTINGS
+Server: domain  
+
+Port: 993  
+
+Security: SSL/TLS  
+
+Use short login: OFF  
+
+Lowercase login: ON  
+
+Require verification: ON  
+
+Allow self signed: OFF  
+
+
+#SMTP SETTINGS
+Server: domain  
+
+Port: 587  
+
+Security: STARTTLS  
+
+Use short login: OFF  
+
+Lowercase login: ON  
+
+Use authentication: ON  
+
+Use login as sender: OFF  
+
+Force AUTH PLAIN: OFF  
+
+Use php mail(): OFF  
+
+Require verification: ON  
+
+Allow self signed: OFF  
+
+
 DKIM 1024 bit uyarısı  
 sudo opendkim-testkey -d domain -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
