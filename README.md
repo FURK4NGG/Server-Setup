@@ -307,5 +307,7 @@ https://mxtoolbox.com/SuperTool.aspx
 If its all good  
 TXT _dmarc "v=DMARC1; p=reject"  
 
+Test it -> https://easydmarc.com/tools/dmarc-lookup  
+
 
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail
