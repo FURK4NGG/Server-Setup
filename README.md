@@ -287,6 +287,7 @@ TXT domain    "v=spf1 a mx -all"
 TXT _dmarc    "v=DMARC1; p=none"  
 TXT mail._domainkey    "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
 CAA domain    issue "letsencrypt.org"  
+PTR mail.domain    domain  
 
 
 sudo yunohost diagnosis run  
