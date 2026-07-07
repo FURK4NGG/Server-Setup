@@ -92,33 +92,41 @@ apt update && apt full-upgrade -y
 
 curl https://install.yunohost.org | bash  
 
-Localden yunohost islemlerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
+Localden yunohost islemlerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz: 
+Element -> chat.domain and Synapse -> syn.domain  
+FressRSS -> rss.domain  
+Gitea -> git.domain  
+Glances -> usage.domain  
+Lime Survey -> forms.domain  
+Lufi -> lufi.domain  
 my_webapp -> domain  
 Nextcloud -> cloud.domain  
-Vert -> convert.domain  
-Gitea -> git.domain  
-Uptime Kuma -> uptime.domain  
-Glances -> usage.domain  
-Element -> chat.domain and Synapse -> syn.domain  
-Lufi -> lufi.domain  
-Pair Drop -> pair.domain  
-FressRSS -> rss.domain  
 Only Office -> docs.domain  
+Pair Drop -> pair.domain  
 Umami -> visitors.domain  
+Uptime Kuma -> uptime.domain  
+Vert -> convert.domain  
+
+
 
 
 -Permissions-  
+*visitors(Ziyaretçiler)* *all_users(Tum yunohost kullanicilari)*
 
-Element -> all_users(Tum yunohost kullanicilari)  
-Synapse -> all_users(Tum yunohost kullanicilari)  
-Glances -> all_users(Tum yunohost kullanicilari)  
+Element -> all_users  
+Synapse -> all_users  
+FreshRSS -> all_users  
 Gitea -> visitors,all_users  
-Lufi -> all_users(Tum yunohost kullanicilari)  
+Glances -> all_users  
+Lime Survey -> visitors,all_users  
+Lufi -> all_users  
 my_webapp -> visitors,all_users  
-Pair Drop -> all_users(Tum yunohost kullanicilari)  
-Umami(visitors.domain) -> all_users(Tum yunohost kullanicilari)  
-Uptime Kuma -> all_users(Tum yunohost kullanicilari)  
-Vert -> all_users(Tum yunohost kullanicilari)  
+Nextcloud -> visitors,all_users,admins  
+Only Office -> visitors,all_users  
+Pair Drop -> all_users  
+Umami(visitors.domain) -> all_users  
+Uptime Kuma -> all_users  
+Vert -> all_users  
 
 
 Display tile in portal -> (Yes)  
