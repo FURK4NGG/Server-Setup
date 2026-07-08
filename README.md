@@ -18,7 +18,7 @@ Store Files,Notes,Calendar,Forms,Photos and OnlyOffice(Nextcloud,OnlyOffice)
 Local file sharing(PairDrop)  
 Realtime website analytics(Umami)  
 Realtime apps'web urls' monitoring(Uptime Kuma)  
-Mail Server(Snappy Mail)  
+Webmail Client(Snappy Mail)  
 File convertion utility(Vert)  
 
 vpn  
