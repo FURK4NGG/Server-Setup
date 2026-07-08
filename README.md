@@ -473,3 +473,130 @@ dig -x <IPv4> +short
 
 Maillerin Yunohost>Users icinde gozukur  
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail or with your Webmail Client(Snappy Mail)  
+
+
+
+# -Wireguard VPN-  
+❌ Bence anonimlik değil.  
+
+✅ Ortak Wi-Fi'da tüm trafiğin VPS'ine kadar şifreli gider.  
+
+✅ Nextcloud, Gitea, SSH gibi servislerine güvenli şekilde bağlanırsın.  
+
+✅ İstersen SSH ve yönetim panellerini yalnızca VPN'den erişilebilir yapabilirsin.  
+
+✅ DNS sorgularını da kendi sunucundan geçirerek yerel ağın bunları görmesini engelleyebilirsin.  
+
+
+sudo apt update  
+sudo apt install wireguard qrencode  
+Test Et>wg --version  
+>wireguard-tools v1.0.20210914 - https://git.zx2c4.com/wireguard-tools/  
+
+
+export TERM=xterm-256color  
+sudo nano /etc/sysctl.conf  
+
+Sunlarin oldugundan emin ol:  
+>net.ipv4.ip_forward=1  
+>net.ipv6.conf.all.forwarding=1  
+
+sudo sysctl -p  
+
+
+sudo -i  
+sudo mkdir -p /etc/wireguard  
+cd /etc/wireguard  
+
+
+umask 077  
+wg genkey > server_private.key  
+wg pubkey < server_private.key > server_public.key  
+
+chmod 600 server_private.key  
+chmod 644 server_public.key  
+sudo cat /etc/wireguard/server_public.key  
+>Bu anahtari gelecekte istemciler icin kullanacagiz  
+
+
+Private Key -> sudo cat /etc/wireguard/server_private.key  
+
+ls -lah /etc/wireguard  
+Suna benzer olmali:  
+>server_private.key  
+>server_public.key  
+>wg0.conf  
+
+
+ip route | grep default
+If resoult has eth:
+
+elif(ens18):
+
+
+
+# Create wg0.conf 
+nano /etc/wireguard/wg0.conf  
+chmod 600 /etc/wireguard/wg0.conf  
+
+Test -> ls -l /etc/wireguard  
+wg0.conf ve server_private.key için sunlari gormelisin:  
+>-rw-------  
+
+```
+[Interface]
+Address = 10.8.0.1/24
+ListenPort = 51820
+PrivateKey = BURAYA_SERVER_PRIVATE_KEY
+
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+```
+IPV6 eklenecek  
+
+
+# Servisi Etkinlestir
+systemctl enable wg-quick@wg0  
+systemctl start wg-quick@wg0  
+
+Test>  
+systemctl status wg-quick@wg0 --no-pager  
+wg  
+ip addr show wg0  
+
+
+sudo yunohost firewall list  
+sudo yunohost firewall allow UDP 51820  
+sudo yunohost firewall reload  
+
+sudo ss -lun | grep 51820  
+>*:51820  
+
+
+# Create Client Key
+cd /etc/wireguard  
+install -m 600 /dev/null phone_private.key  
+wg genkey | tee phone_private.key > /dev/null  
+wg pubkey < phone_private.key > phone_public.key  
+chmod 600 phone_private.key  
+chmod 644 phone_public.key  
+
+Test -> ls -l phone_*  
+>-rw------- phone_private.key  
+>-rw-r--r-- phone_public.key  
+
+
+Phone Public Key -> cat phone_public.key  
+
+nano /etc/wireguard/wg0.conf  
+```
+[Peer]
+# Phone
+PublicKey = BURAYA_PHONE_PUBLIC_KEY
+AllowedIPs = 10.8.0.2/32
+```
+
+systemctl restart wg-quick@wg0  
+wg  
+>peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+>allowed ips: 10.8.0.2/32  
