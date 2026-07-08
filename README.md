@@ -328,8 +328,9 @@ sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"
 In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to mail.domain))  
 
 
-ptr test  
+PTR Test  
 dig -x IPV4 +short  
+>mail.domain  
 
 
 
