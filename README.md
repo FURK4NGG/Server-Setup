@@ -324,12 +324,7 @@ PTR domain    mail.domain
 sudo yunohost diagnosis run  
 
 sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
-In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to mail.domain))  
 
-
-PTR Test  
-dig -x IPV4 +short  
->mail.domain  
 
 
 
@@ -452,6 +447,28 @@ If its all good
 dmarc@domain diye yeni hesap acmali yunohostta  
 TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
+
+
+In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to mail.domain))  
+
+sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak  
+export TERM=xterm-256color  
+sudo vim /etc/postfix/main.cf > myhostname = mail.domain  
+
+
+sudo postconf myhostname  
+>myhostname = mail.domain  
+
+openssl s_client -starttls smtp -connect mail.domain:587  
+Type>EHLO test 
+>250-mail.domain  
+
+PTR Test
+dig -x <IPv4> +short  
+>mail.domain  
+
+Üçü de mail.furk4ngg.me gösteriyorsa yapı tamamen tutarlı hale gelmiş olur.
+
 
 
 Maillerin Yunohost>Users icinde gozukur  
