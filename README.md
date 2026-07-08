@@ -26,7 +26,6 @@ vpn
 Real VNC Viewer(For connecting to server easily)  
 File Zilla(For upload your website documents to server)  
 
-DNS LOOKUP and google PageSpeed Insights  
 
 
 # -SETUP-  
@@ -439,12 +438,14 @@ sudo opendkim-testkey -d domain -s mail -vvv
 
 
 # TEST ADRESSES
+DNS Checker -> https://mxtoolbox.com/DNSLookup.aspx  
 Validate your DKIM and SPF DNS records. -> https://dmarcdkim.com/tools/check-dkim-record?domain=domain  
 Mail Tester -> https://www.mail-tester.com/  
 MX Records and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
 SPF Test -> https://mxtoolbox.com/spf.aspx  
 Domain Health Report -> https://mxtoolbox.com/emailhealth/  
 SEO TEST -> https://www.seobility.net/en/seocheck/  
+Web Page Quality -> https://pagespeed.web.dev/  
 
 
 If its all good  
