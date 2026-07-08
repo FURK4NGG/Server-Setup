@@ -536,6 +536,7 @@ elif(ens18):
 
 
 # Create wg0.conf 
+export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
 chmod 600 /etc/wireguard/wg0.conf  
 
@@ -588,6 +589,7 @@ Test -> ls -l phone_*
 
 Phone Public Key -> cat phone_public.key  
 
+export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
 ```
 [Peer]
