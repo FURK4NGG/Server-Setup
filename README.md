@@ -515,11 +515,11 @@ wg pubkey < server_private.key > server_public.key
 
 chmod 600 server_private.key  
 chmod 644 server_public.key  
-sudo cat /etc/wireguard/server_public.key  
+Server Public Key -> sudo cat /etc/wireguard/server_public.key  
 >Bu anahtari gelecekte istemciler icin kullanacagiz  
 
 
-Private Key -> sudo cat /etc/wireguard/server_private.key  
+Server Private Key -> sudo cat /etc/wireguard/server_private.key  
 
 ls -lah /etc/wireguard  
 Suna benzer olmali:  
