@@ -99,20 +99,20 @@ A uptime.domain IPV4
 A usage.domain IPV4  
 A visitors.domain IPV4  
 
-A chat.domain IPV6  
-A cloud.domain IPV6  
-A convert.domain IPV6  
-A docs.domain IPV6  
-A forms.domain IPV6  
-A git.domain IPV6  
-A lufi.domain IPV6  
-A mail.domain IPV6  
-A pair.domain IPV6  
-A rss.domain IPV6  
-A syn.domain IPV6  
-A uptime.domain IPV6  
-A usage.domain IPV6  
-A visitors.domain IPV6  
+AAAA chat.domain IPV6  
+AAAA cloud.domain IPV6  
+AAAA convert.domain IPV6  
+AAAA docs.domain IPV6  
+AAAA forms.domain IPV6  
+AAAA git.domain IPV6  
+AAAA lufi.domain IPV6  
+AAAA mail.domain IPV6  
+AAAA pair.domain IPV6  
+AAAA rss.domain IPV6  
+AAAA syn.domain IPV6  
+AAAA uptime.domain IPV6  
+AAAA usage.domain IPV6  
+AAAA visitors.domain IPV6  
 
 
 
