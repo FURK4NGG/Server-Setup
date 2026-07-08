@@ -84,6 +84,39 @@ CNAME www furk4ngg.me
 A * IPV4  
 AAAA * IPV6  
 
+A chat.domain IPV4  
+A cloud.domain IPV4  
+A convert.domain IPV4  
+A docs.domain IPV4  
+A forms.domain IPV4  
+A git.domain IPV4  
+A lufi.domain IPV4  
+A mail.domain IPV4  
+A pair.domain IPV4  
+A rss.domain IPV4  
+A syn.domain IPV4  
+A uptime.domain IPV4  
+A usage.domain IPV4  
+A visitors.domain IPV4  
+
+A chat.domain IPV6  
+A cloud.domain IPV6  
+A convert.domain IPV6  
+A docs.domain IPV6  
+A forms.domain IPV6  
+A git.domain IPV6  
+A lufi.domain IPV6  
+A mail.domain IPV6  
+A pair.domain IPV6  
+A rss.domain IPV6  
+A syn.domain IPV6  
+A uptime.domain IPV6  
+A usage.domain IPV6  
+A visitors.domain IPV6  
+
+
+
+
 A rss IPV4  
 AAAA rss IPV6  
 
