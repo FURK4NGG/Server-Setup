@@ -472,4 +472,4 @@ dig -x <IPv4> +short
 
 
 Maillerin Yunohost>Users icinde gozukur  
-You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail
+You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail or with your Webmail Client(Snappy Mail)  
