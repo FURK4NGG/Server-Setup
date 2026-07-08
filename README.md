@@ -587,7 +587,7 @@ Test -> ls -l phone_*
 >-rw-r--r-- phone_public.key  
 
 
-Phone Public Key -> cat phone_public.key  
+Phone Public Key -> sudo cat phone_public.key  
 
 export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
@@ -605,7 +605,7 @@ wg
 
 
 # Phone.conf
-Phone Public Key -> cat phone_private.key  
+Phone Public Key -> sudo cat phone_private.key  
 Server Public Key -> sudo cat /etc/wireguard/server_public.key  
 export TERM=xterm-256color  
 nano /etc/wireguard/phone.conf  
