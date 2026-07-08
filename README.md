@@ -437,7 +437,7 @@ sudo opendkim-testkey -d domain -s mail -vvv
 # TEST ADRESSES
 Validate your DKIM and SPF DNS records. -> https://dmarcdkim.com/tools/check-dkim-record?domain=domain  
 Mail Tester -> https://www.mail-tester.com/  
-and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
+MX Records and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
 SPF Test -> https://mxtoolbox.com/spf.aspx  
 Domain Health Report -> https://mxtoolbox.com/emailhealth/  
 SEO TEST -> https://www.seobility.net/en/seocheck/  
