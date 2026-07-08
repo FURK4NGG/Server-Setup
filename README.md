@@ -115,12 +115,6 @@ AAAA usage.domain IPV6
 AAAA visitors.domain IPV6  
 
 
-
-
-A rss IPV4  
-AAAA rss IPV6  
-
-
 In your domain provider,update your nameserver based on cloudflare nameserver such as 'sam.ns.cloudflare.com' and 'kack.ns.cloudflare.com'  
 
 hostnamectl set-hostname domain  
