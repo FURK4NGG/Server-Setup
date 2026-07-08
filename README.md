@@ -548,7 +548,7 @@ wg0.conf ve server_private.key için sunlari gormelisin:
 [Interface]
 Address = 10.8.0.1/24
 ListenPort = 51820
-PrivateKey = BURAYA_SERVER_PRIVATE_KEY
+PrivateKey = SERVER_PRIVATE_KEY
 
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
@@ -594,7 +594,7 @@ nano /etc/wireguard/wg0.conf
 ```
 [Peer]
 # Phone
-PublicKey = BURAYA_PHONE_PUBLIC_KEY
+PublicKey = PHONE_PUBLIC_KEY
 AllowedIPs = 10.8.0.2/32
 ```
 
@@ -602,3 +602,43 @@ systemctl restart wg-quick@wg0
 wg  
 >peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
 >allowed ips: 10.8.0.2/32  
+
+
+# Phone.conf
+Phone Public Key -> cat phone_private.key  
+Server Public Key -> sudo cat /etc/wireguard/server_public.key  
+export TERM=xterm-256color  
+nano /etc/wireguard/phone.conf  
+
+```
+[Interface]
+PrivateKey = PHONE_PRIVATE_KEY
+Address = 10.8.0.2/24
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY
+Endpoint = VPS_IP:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+PersistentKeepalive = 25
+```
+
+QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf  
+
+Android veya iPhone'da resmi WireGuard uygulamasını yükle.  
+Add Tunel(+)  
+
+
+wg  
+>peer: XXXXXXXXXXXXX  
+>latest handshake: 5 seconds ago  
+>transfer: 120 KiB received, 90 KiB sent  
+
+
+Test -> https://ifconfig.me  
+>You should see the VPS_IP  
+
+
+
+
+
