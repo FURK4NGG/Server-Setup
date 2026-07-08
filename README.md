@@ -298,7 +298,7 @@ PTR domain    mail.domain
 sudo yunohost diagnosis run  
 
 sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
-In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to domain))  
+In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to mail.domain))  
 
 
 ptr test  
