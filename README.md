@@ -467,7 +467,7 @@ PTR Test
 dig -x <IPv4> +short  
 >mail.domain  
 
-Üçü de mail.furk4ngg.me gösteriyorsa yapı tamamen tutarlı hale gelmiş olur.
+Üçü de mail.domain gösteriyorsa yapı tamamen tutarlı hale gelmiş olur.
 
 
 
