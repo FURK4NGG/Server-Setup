@@ -449,7 +449,7 @@ TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=10
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
 
 
-In your Server Hosting change (Reverse DNS Management>PTR Records(ip_adress to mail.domain))  
+In your Server Hosting change (Reverse DNS Management>PTR Records(IPV4 to mail.domain / IPV6 to mail.domain))  
 
 sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak  
 export TERM=xterm-256color  
