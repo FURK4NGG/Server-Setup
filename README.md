@@ -21,8 +21,7 @@ Realtime apps'web urls' monitoring(Uptime Kuma)
 Webmail Client(Snappy Mail)  
 File convertion utility(Vert)  
 
-vpn  
-mailserver  
+vpn   
 
 Real VNC Viewer(For connecting to server easily)  
 File Zilla(For upload your website documents to server)  
@@ -110,6 +109,7 @@ Only Office -> docs.domain
 Pair Drop -> pair.domain  
 Umami -> visitors.domain  
 Uptime Kuma -> uptime.domain  
+Snappy -> mail.domain  
 Vert -> convert.domain  
 
 
@@ -131,6 +131,7 @@ Only Office -> visitors,all_users
 Pair Drop -> all_users  
 Umami(visitors.domain) -> all_users  
 Uptime Kuma -> all_users  
+Snappy -> all_users  
 Vert -> all_users  
 
 
