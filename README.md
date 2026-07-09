@@ -333,16 +333,18 @@ TXT mail._domainkey    "v=DKIM1; h=sha256; k=rsa; p='long value that you can see
 CAA domain    issue "letsencrypt.org"  
 PTR domain    mail.domain  
 
-
+```
 sudo yunohost diagnosis run  
-
+```
+```
 sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"  
-
+```
 
 
 
 sudo postconf myhostname  
-sudo grep -R "mail.domain" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null  
+sudo grep -R "mail.domain" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null
+
 
 Which ports are open? ->  
 IMAP  
@@ -368,26 +370,36 @@ openssl s_client -starttls imap -connect domain:143
 
 
 Is SMTP Authentication working ->  
-doveadm auth test furk4ngg@domain  
+```
+doveadm auth test furk4ngg@domain
+```
 >auth succeeded
 
 
 Can LDAP see the email address? ->  
+```
 postmap -q "furk4ngg@domain" ldap:/etc/postfix/ldap-accounts.cf  
+```
 
 
 What is the mail server hostname? ->  
+```
 sudo postconf myhostname  
+```
 >myhostname = domain
 
 
 Verify the mail domains ->  
+```
 sudo yunohost user info furk4ngg  
+```
 >mail:furk4ngg@domain
 
 
 Which domains accept mail? ->  
-sudo cat /etc/postfix/virtual-mailbox-domains  
+```
+sudo cat /etc/postfix/virtual-mailbox-domains
+```
 
 Show the dedicated sender addresses used by applications (Nextcloud, Synapse, etc.) ->  
 sudo postmap -s /etc/postfix/app_senders_login_maps  
