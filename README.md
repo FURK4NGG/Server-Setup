@@ -21,11 +21,10 @@ Realtime apps'web urls' monitoring(Uptime Kuma)
 Webmail Client(Snappy Mail)  
 File convertion utility(Vert)  
 
-vpn 
+VPN Server(Wireguard VPN)*For long-term compatibility, it does not run inside YunoHost*  
 
 Real VNC Viewer(For connecting to server easily)  
 File Zilla(For upload your website documents to server)  
-
 
 
 # -SETUP-  
