@@ -223,20 +223,20 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 
 
-# -Lufi Ayarlari-  
+# -Lufi Settings-  
 Install Lufi with LDAP configuration? -> (Yes)  
 
 # -Uptime Kuma-  
 Choose SQLite database  
 
-# -Umami Ayarlari-  
+# -Umami Settings-  
 visitors.domain -> all_users  
 visitors.domain/api -> visitors  
 visitors.domain/recorder -> visitors  
 visitors.domain/script -> visitors  
 
 
-# -Element Ayarlari-  
+# -Element Settings-  
 Enable fedration features by default -> (Yes)  
 chat.domain -> all_users  
 chat.domain/bundles -> visitors  
@@ -247,7 +247,7 @@ syn.domain/livekit -> visitors
 syn.domain/_matrix -> visitors  
 syn.domain/.well-known/matrix -> visitors  
 
-# -Gitea Ayarlari-  
+# -Gitea Settings-  
 Enable LFS support on this instance -> (Yes)  
 Enable support hover SSH protocol -> (Yes)  
 git.domain -> all_users,visitors  
@@ -259,7 +259,7 @@ git.domain.megit.furk4ngg.me/v2 -> visitors
 forms.domain/admin -> admin page  
 https://forms.domain/index.php/dashboard/view
 
-# -NextCloud Ayarlari-  
+# -NextCloud Settings-  
 Add the users' home directory in Nextcloud? -> (No)  
 
 # -OnlyOffice Setup-  
@@ -309,7 +309,7 @@ Analytics.js yüklenemiyor görülürse:
     Firefox Enhanced Tracking Protection'ı kapat veya uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
 CTRL + F5  
 
-# -Mail Ayarlari-  
+# -Mail Settings-  
 (Cloudflare)  
 *All Records should be DNS only*  
 MX domain    mail.domain (Priority 10)  
@@ -475,7 +475,7 @@ You can connect and use your mail with these mail providers:Thunderbird,Gmail,Ou
 
 
 
-# -Wireguard VPN-  
+# 📦 Wireguard VPN Setup
 ❌ Bence anonimlik değil.  
 
 ✅ Ortak Wi-Fi'da tüm trafiğin VPS'ine kadar şifreli gider.  
