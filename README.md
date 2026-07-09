@@ -776,11 +776,6 @@ DNS Leak Test -> https://browserleaks.com/dns
 
 ⚠️ Eger yeni cihaz clienti eklemek istiyorsan yeni key olusturup VPN Agini(10.8.0.2, 10.8.0.3, 10.8.0.4...) degistirip yukaridaki adimlari phone/desktop yerine baska isimlendirmeler yaparak izleyebilirsin.  
 
-or  
-
-'Create Client Key'  
-wg set wg0 peer LAPTOP_PUBLIC_KEY allowed-ips 10.8.0.3/32  
-
 
 phone.conf/desktop.conf  
 Full Tunnel Mode -> AllowedIPs = 0.0.0.0/0 Bütün internet trafiğin VPN'den geçer.  
