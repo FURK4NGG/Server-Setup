@@ -27,7 +27,7 @@ Real VNC Viewer(For connecting to server easily)
 File Zilla(For upload your website documents to server)  
 
 
-# -SETUP-  
+## 📦 Setup
 
 ssh root@SUNUCU_IP  
 
@@ -68,7 +68,7 @@ Saat doğru mu
 Network doğru mu  
 
 
-# -CLOUDFLARE-  
+# -CLOUDFLARE DNS RECORDS-  
 Sign In into cloudflare and chose DNS Records>Connect a Domain  
 Configure AI training & search policies:
 Search:Allow  
