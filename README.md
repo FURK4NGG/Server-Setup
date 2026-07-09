@@ -379,7 +379,7 @@ sudo cat /etc/postfix/virtual-mailbox-domains
 Bu uygulamaların (Nextcloud, Synapse vb.) kullandığı özel gönderen adreslerini gösterir. ->  
 sudo postmap -s /etc/postfix/app_senders_login_maps  
 
-# IMAP SETTINGS
+## IMAP SETTINGS
 >Admin page -> https://mail.domain//app/?admin  
 >username:admin  
 >password:/var/www/snappymail/app/data/_data_/_default_/admin_password.txt
