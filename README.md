@@ -1,6 +1,6 @@
 # 👀 Server-Setup Overview
 
-This repository helps you build a complete self-hosted environment on your own VPS or home server. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, and many other applications—all under your own control.  
+This repository helps you build a complete self-hosted environment on your own VPS or home server. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, vpn server and many other applications—all under your own control.  
 
 *Terminal icerisinde yukari asagi yapmak icin 'Shift+Page_Up' ve 'Shift+Page_Down' tuslarini kullanabilirsin*  
 *'sudo dmesg -D' kodu ile terminale yazirilan auid yazilarini o oturum icin kisa sureli durdurur*  
@@ -21,7 +21,7 @@ Realtime apps'web urls' monitoring(Uptime Kuma)
 Webmail Client(Snappy Mail)  
 File convertion utility(Vert)  
 
-vpn   
+vpn 
 
 Real VNC Viewer(For connecting to server easily)  
 File Zilla(For upload your website documents to server)  
@@ -591,6 +591,7 @@ Phone Public Key -> sudo cat phone_public.key
 
 export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
+Add this into end of the page  
 ```
 [Peer]
 # Phone
@@ -636,9 +637,20 @@ wg
 
 
 Test -> https://ifconfig.me  
->You should see the VPS_IP  
+>You should see the VPS_IP
+
+DNS Leak Test -> https://browserleaks.com/dns  
+
+⚠️ Eger yeni cihaz clienti eklemek istiyorsan yeni key olusturup VPN Agini(10.8.0.2, 10.8.0.3, 10.8.0.4...) degistirip yukaridaki 'Create Client Key' ve 'Phone.conf' adimlarini phone yerine baska isimlendirme yaparak izleyebilirsin.  
+
+or  
+
+'Create Client Key'  
+wg set wg0 peer LAPTOP_PUBLIC_KEY allowed-ips 10.8.0.3/32  
 
 
+phone.conf  
+Full Tunnel Mode -> AllowedIPs = 0.0.0.0/0 Bütün internet trafiğin VPN'den geçer.  
 
-
+Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den geçer.  
 
