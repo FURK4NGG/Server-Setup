@@ -626,9 +626,32 @@ PersistentKeepalive = 25
 
 QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf  
 
-Android veya iPhone'da resmi WireGuard uygulamasını yükle.  
-Add Tunel(+)  
 
+
+For linux  
+Arch Linux  
+sudo pacman -S wireguard-tools
+
+
+Ubuntu/Rasberry Pi OS
+sudo apt install wireguard  
+
+Fedora  
+sudo dnf install wireguard-tools  
+
+<summary>Connect VPN</summary>
+
+   <details>
+   <summary>Android or iPhone</summary>
+   </details>
+        resmi WireGuard uygulamasını yükle.
+        Add Tunel(+)
+   <details>
+   <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
+
+   </details>
+
+</details>
 
 wg  
 >peer: XXXXXXXXXXXXX  
