@@ -582,10 +582,10 @@ sudo ss -lun | grep 51820
    <details>
    <summary>For Mobile Clients</summary>
        
-   # Create Client Key  
+   # Create Mobile Client Key  
        
    cd /etc/wireguard  
-   install -m 600 /dev/null phone_private.key  
+   umask 077  
    wg genkey | tee phone_private.key > /dev/null  
    wg pubkey < phone_private.key > phone_public.key  
    chmod 600 phone_private.key  
@@ -613,7 +613,7 @@ sudo ss -lun | grep 51820
    >allowed ips: 10.8.0.2/32  
         
    # Phone.conf
-   Phone Public Key -> sudo cat phone_private.key  
+   Phone Private Key -> sudo cat phone_private.key  
    Server Public Key -> sudo cat /etc/wireguard/server_public.key  
    export TERM=xterm-256color  
    nano /etc/wireguard/phone.conf  
@@ -636,6 +636,23 @@ sudo ss -lun | grep 51820
    Resmi WireGuard uygulamasını yükle  
    Add Tunel(+)  
    Scan the QR code  
+   🎉 You are ready to use yor VPN  
+
+   # Delete Mobile Client Key
+```
+   rm -f \
+   /etc/wireguard/phone_private.key \
+   /etc/wireguard/phone_public.key \
+   /etc/wireguard/phone.conf
+```
+   and delete this block in wg0.conf  
+```
+   [Peer]
+   # Phone
+   PublicKey = PHONE_PUBLIC_KEY
+   AllowedIPs = 10.8.0.2/32
+```
+   sudo systemctl restart wg-quick@wg0  
    </details>
    
 
@@ -660,44 +677,44 @@ sudo ss -lun | grep 51820
    # Create Desktop Client Key
 
    cd /etc/wireguard  
-install -m 600 /dev/null desktop_private.key  
-wg genkey | tee desktop_private.key > /dev/null  
-wg pubkey < desktop_private.key > desktop_public.key  
-chmod 600 desktop_private.key  
-chmod 644 desktop_public.key  
+   umask 077  
+   wg genkey | tee desktop_private.key > /dev/null  
+   wg pubkey < desktop_private.key > desktop_public.key  
+   chmod 600 desktop_private.key  
+   chmod 644 desktop_public.key  
 
-Test -> ls -l phone_*  
->-rw------- desktop_private.key  
->-rw-r--r-- desktop_public.key  
+   Test -> ls -l phone_*  
+   >-rw------- desktop_private.key  
+   >-rw-r--r-- desktop_public.key  
 
 
-Desktop Public Key -> sudo cat desktop_public.key  
+   Desktop Public Key -> sudo cat desktop_public.key  
 
-export TERM=xterm-256color  
-nano /etc/wireguard/wg0.conf  
-Add this into end of the page  
+   export TERM=xterm-256color  
+   nano /etc/wireguard/wg0.conf  
+   Add this into end of the page  
 ```
-[Peer]
-# Desktop
-PublicKey = DESKTOP_PUBLIC_KEY
-AllowedIPs = 10.8.0.3/32
+   [Peer]
+   # Desktop
+   PublicKey = DESKTOP_PUBLIC_KEY
+   AllowedIPs = 10.8.0.3/32
 ```
 
-systemctl restart wg-quick@wg0  
-wg  
->peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
->allowed ips: 10.8.0.2/32  
+   systemctl restart wg-quick@wg0  
+   wg  
+   >peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+   >allowed ips: 10.8.0.3/32  
 
 
-# desktop.conf
-Desktop Public Key -> sudo cat desktop_private.key  
-Server Public Key -> sudo cat /etc/wireguard/server_public.key  
+   # desktop.conf
+   Desktop Private Key -> sudo cat desktop_private.key  
+   Server Public Key -> sudo cat /etc/wireguard/server_public.key  
 
-In your PC  
-sudo nano /etc/wireguard/wg0.conf  
+   In your PC  
+   sudo nano /etc/wireguard/wg0.conf  
 
 ```
-[Interface]
+   [Interface]
    PrivateKey = DESKTOP_PRIVATE_KEY
    Address = 10.8.0.3/24
    PreUp = ip route add VPS_IP/32 via 192.168.1.1 dev enp11s0
@@ -722,12 +739,26 @@ sudo nano /etc/wireguard/wg0.conf
     
    If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again
    sudo wg-quick up wg0 
+
+   🎉 You are ready to use yor VPN  
+
+   # Delete Mobile Client Key
+```
+   rm -f \
+   /etc/wireguard/desktop_private.key \
+   /etc/wireguard/desktop_public.key \
+   /etc/wireguard/desktop.conf
+```
+   and delete this block in wg0.conf  
+```
+   [Peer]
+   # Desktop
+   PublicKey = DESKTOP_PUBLIC_KEY
+   AllowedIPs = 10.8.0.3/32
+```
+   sudo systemctl restart wg-quick@wg0  
    </details>
 </details>
-
-
-
-
 
 
 
@@ -743,7 +774,7 @@ Test -> https://ifconfig.me
 
 DNS Leak Test -> https://browserleaks.com/dns  
 
-⚠️ Eger yeni cihaz clienti eklemek istiyorsan yeni key olusturup VPN Agini(10.8.0.2, 10.8.0.3, 10.8.0.4...) degistirip yukaridaki 'Create Client Key' ve 'Phone.conf' adimlarini phone yerine baska isimlendirme yaparak izleyebilirsin.  
+⚠️ Eger yeni cihaz clienti eklemek istiyorsan yeni key olusturup VPN Agini(10.8.0.2, 10.8.0.3, 10.8.0.4...) degistirip yukaridaki adimlari phone/desktop yerine baska isimlendirmeler yaparak izleyebilirsin.  
 
 or  
 
@@ -751,8 +782,17 @@ or
 wg set wg0 peer LAPTOP_PUBLIC_KEY allowed-ips 10.8.0.3/32  
 
 
-phone.conf  
+phone.conf/desktop.conf  
 Full Tunnel Mode -> AllowedIPs = 0.0.0.0/0 Bütün internet trafiğin VPN'den geçer.  
 
 Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den geçer.  
 
+
+# Delete Server Key
+```
+   rm -f \
+   /etc/wireguard/server_private.key \
+   /etc/wireguard/server_public.key \
+   /etc/wireguard/wg0.conf
+```
+   sudo systemctl disable --now wg-quick@wg0  
