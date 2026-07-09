@@ -630,26 +630,26 @@ QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf
 
 <details>
 <summary>Connect VPN</summary>
-    <details>
+   <details>
     <summary>Android or iPhone</summary>
         Resmi WireGuard uygulamasını yükle
         Add Tunel(+)
-    </details>
+   </details>
    
-    <details>
+   <details>
     <summary>Arch</summary>
         sudo pacman -S wireguard-tools
-    </details>
+   </details>
    
-    <details>
+   <details>
     <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
         sudo apt install wireguard
-    </details>
+   </details>
 
-    <details>
+   <details>
     <summary>Fedora</summary>
         sudo dnf install wireguard-tools
-    </details>
+   </details>
 
     Copy your laptop.conf to /etc/wireguard/wg0.conf in your PC
     sudo chmod 600 /etc/wireguard/wg0.conf
