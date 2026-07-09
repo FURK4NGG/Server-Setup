@@ -541,12 +541,6 @@ elif(ens18):
 ## Create wg0.conf 
 export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
-chmod 600 /etc/wireguard/wg0.conf  
-
-Test -> ls -l /etc/wireguard  
-wg0.conf ve server_private.key için sunlari gormelisin:  
->-rw-------  
-
 ```
 [Interface]
 Address = 10.8.0.1/24
@@ -556,6 +550,13 @@ PrivateKey = SERVER_PRIVATE_KEY
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 ```
+chmod 600 /etc/wireguard/wg0.conf  
+
+Test -> ls -l /etc/wireguard  
+wg0.conf ve server_private.key için sunlari gormelisin:  
+>-rw-------  
+
+
 IPV6 eklenecek  
 
 
