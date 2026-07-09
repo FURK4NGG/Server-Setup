@@ -585,6 +585,7 @@ sudo ss -lun | grep 51820
    Resmi WireGuard uygulamasını yükle
    Add Tunel(+)
    Scan the QR code
+   </details>
    
 
    <details>
