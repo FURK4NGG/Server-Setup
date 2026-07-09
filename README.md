@@ -140,7 +140,7 @@ Vert -> convert.domain
 
 
 
-# -App Permissions-  
+# -Yunohost App Permissions-  
 *visitors(Ziyaretçiler)* *all_users(Tum yunohost kullanicilari)*
 
 Element -> all_users  
