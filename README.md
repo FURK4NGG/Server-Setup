@@ -644,9 +644,10 @@ sudo dnf install wireguard-tools
 
    <details>
    <summary>Android or iPhone</summary>
-   </details>
-        resmi WireGuard uygulamasını yükle.
+       resmi WireGuard uygulamasını yükle.
         Add Tunel(+)
+   </details>
+        
    <details>
    <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
 
