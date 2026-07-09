@@ -3,7 +3,7 @@
 This repository helps you build a complete self-hosted environment on your own VPS or home server. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, vpn server and many other applications—all under your own control.  
 
 
-![IR_PC_Controller Demo Image]()
+![Server-Setup Demo Image]()
 
 
 
@@ -186,7 +186,7 @@ sudo yunohost domain cert install
 
 
 
-# -Web App Ayarlari   (index.html yerine index yazinca calismasi icin)-  
+# -Web App Ayarlari (Make index work instead of index.html)-  
 sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
 index index.php index.html; --> index index.html index.htm;  
 
@@ -268,19 +268,19 @@ https://forms.domain/index.php/dashboard/view
 Add the users' home directory in Nextcloud? -> (No)  
 
 # -OnlyOffice Setup-  
-Server settings successfully updated doğrula.  
-healthcheck ve api.js kontrol et.  
+Verify that the server settings were successfully updated  
+Check healthcheck and api.js  
 ```
 sudo yunohost service status | grep -i onlyoffice
 curl https://docs.domain/healthcheck
 curl -I https://docs.domain/web-apps/apps/api/documents/api.js
 ```
-Secret key eşitliğini doğrula.  
+Verify that the secret keys match  
 ```
 sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 ```
-SSL sertifikası  
-curl testleri  
+Verify the SSL certificate  
+Run the curl tests  
 ```
 sudo -i
 
@@ -295,23 +295,23 @@ sudo apt install php8.2-xml php8.2-mbstring php8.2-zip php8.2-gd php8.2-curl
 sudo systemctl restart php8.2-fpm
 php -m | grep -E "SimpleXML|mbstring|zip|gd|curl"
 ```
-occ dogrula  
+Verify occ  
 ```
 sudo -i
 php /var/www/nextcloud/occ status
 ```
 
-son teşhis
+Final diagnosis
 ```
 sudo tail -100 /var/log/onlyoffice/docservice.log
 ```
 
 
 
-Yeni belge aç.  
-Sonsuz yüklenme varsa ilk iş F12 → Console aç.  
-Analytics.js yüklenemiyor görülürse:  
-    Firefox Enhanced Tracking Protection'ı kapat veya uBlock/AdGuard/Brave Shields gibi engelleyicileri bu site için devre dışı bırak.  
+Create a new document  
+If the page loads forever, first open F12 → Console  
+If analytics.js fails to load:  
+    Disable Firefox Enhanced Tracking Protection or turn off uBlock, AdGuard, Brave Shields, or any similar blocker for this site 
 CTRL + F5  
 
 # -Mail Settings-  
