@@ -581,9 +581,9 @@ sudo ss -lun | grep 51820
 
    <details>
    <summary>For Mobile Clients</summary>
-   # Create Client Key
+   # Create Client Key  
    cd /etc/wireguard  
-   install -m 600 /dev/null phone_private.key 
+   install -m 600 /dev/null phone_private.key  
    wg genkey | tee phone_private.key > /dev/null  
    wg pubkey < phone_private.key > phone_public.key  
    chmod 600 phone_private.key  
@@ -599,12 +599,12 @@ sudo ss -lun | grep 51820
    export TERM=xterm-256color  
    nano /etc/wireguard/wg0.conf  
    Add this into end of the page  
-     ```
+```
    [Peer]
    # Phone
    PublicKey = PHONE_PUBLIC_KEY
    AllowedIPs = 10.8.0.2/32
-    ```
+```
    systemctl restart wg-quick@wg0  
    wg  
    >peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
@@ -615,7 +615,7 @@ sudo ss -lun | grep 51820
    Server Public Key -> sudo cat /etc/wireguard/server_public.key  
    export TERM=xterm-256color  
    nano /etc/wireguard/phone.conf  
-    ```
+```
    [Interface]
    PrivateKey = PHONE_PRIVATE_KEY
    Address = 10.8.0.2/24
@@ -626,7 +626,7 @@ sudo ss -lun | grep 51820
    Endpoint = VPS_IP:51820
    AllowedIPs = 0.0.0.0/0, ::/0
    PersistentKeepalive = 25
-    ```
+```
    QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf  
 
    
