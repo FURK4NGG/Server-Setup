@@ -311,7 +311,7 @@ sudo tail -100 /var/log/onlyoffice/docservice.log
 Create a new document  
 If the page loads forever, first open F12 → Console  
 If analytics.js fails to load:  
-    Disable Firefox Enhanced Tracking Protection or turn off uBlock, AdGuard, Brave Shields, or any similar blocker for this site 
+    Disable Firefox Enhanced Tracking Protection or turn off uBlock, AdGuard, Brave Shields, or any similar blocker for this site  
 CTRL + F5  
 
 # -Mail Settings-  
@@ -335,7 +335,7 @@ sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"
 sudo postconf myhostname  
 sudo grep -R "mail.domain" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null  
 
-Hangi portların açık olduğu ->  
+Which ports are open? ->  
 IMAP  
 sudo ss -tln | grep -E ":143|:993"  
 >143 → IMAP + STARTTLS  
@@ -348,7 +348,7 @@ sudo ss -tln | grep -E ":25|:465|:587"
 >✅ 587  
 
 
-STARTTLS gerçekten çalışıyor mu ->  
+Is STARTTLS actually working? ->  
 SMTP  
 openssl s_client -starttls smtp -connect domain:587  
 >Verify return code: 0 (ok)
@@ -358,7 +358,7 @@ openssl s_client -connect domain:993
 openssl s_client -starttls imap -connect domain:143  
 
 
-SMTP Authentication çalışıyor mu? ->  
+Is SMTP Authentication working ->  
 doveadm auth test furk4ngg@domain  
 >auth succeeded
 
@@ -367,20 +367,20 @@ LDAP mail adresini görüyor mu? ->
 postmap -q "furk4ngg@domain" ldap:/etc/postfix/ldap-accounts.cf  
 
 
-Mail sunucusunun hostname'i ->  
+What is the mail server hostname? ->  
 sudo postconf myhostname  
 >myhostname = domain
 
 
-Mail domainlerini kontrol ->  
+Verify the mail domains ->  
 sudo yunohost user info furk4ngg  
 >mail:furk4ngg@domain
 
 
-Hangi domainler mail kabul eder ->  
+Which domains accept mail? ->  
 sudo cat /etc/postfix/virtual-mailbox-domains  
 
-Bu uygulamaların (Nextcloud, Synapse vb.) kullandığı özel gönderen adreslerini gösterir. ->  
+Show the dedicated sender addresses used by applications (Nextcloud, Synapse, etc.) ->  
 sudo postmap -s /etc/postfix/app_senders_login_maps  
 
 ## IMAP SETTINGS
@@ -471,25 +471,25 @@ PTR Test
 dig -x <IPv4> +short  
 >mail.domain  
 
-Üçü de mail.domain gösteriyorsa yapı tamamen tutarlı hale gelmiş olur.
+If all three point to mail.domain, the mail configuration is fully consistent.
 
 
 
-Maillerin Yunohost>Users icinde gozukur  
+Emails appear under YunoHost → Users  
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail or with your Webmail Client(Snappy Mail)  
 
 
 
 # 📦 Wireguard VPN Setup
-❌ Bence anonimlik değil.  
+❌ In my opinion, this is not anonymity, since all tunnel traffic exits through a single VPS IP address  
 
-✅ Ortak Wi-Fi'da tüm trafiğin VPS'ine kadar şifreli gider.  
+✅ On public Wi-Fi, all traffic is encrypted until it reaches your VPS  
 
-✅ Nextcloud, Gitea, SSH gibi servislerine güvenli şekilde bağlanırsın.  
+✅ You can securely access services such as Nextcloud, Gitea, and SSH  
 
-✅ İstersen SSH ve yönetim panellerini yalnızca VPN'den erişilebilir yapabilirsin.  
+✅ You can restrict SSH and management panels so they are only accessible through the VPN  
 
-✅ DNS sorgularını da kendi sunucundan geçirerek yerel ağın bunları görmesini engelleyebilirsin.  
+✅ You can also route DNS queries through your own server, preventing the local network from seeing them  
 
 
 sudo apt update  
@@ -500,7 +500,7 @@ Test Et>wg --version
 
 export TERM=xterm-256color  
 sudo nano /etc/sysctl.conf  
-Sunlarin oldugundan emin ol:  
+Make sure the following are present:  
 >net.ipv4.ip_forward=1  
 >net.ipv6.conf.all.forwarding=1  
 
@@ -519,13 +519,13 @@ wg pubkey < server_private.key > server_public.key
 chmod 600 server_private.key  
 chmod 644 server_public.key  
 Server Public Key -> sudo cat /etc/wireguard/server_public.key  
->Bu anahtari gelecekte istemciler icin kullanacagiz  
+>We will use this key for future clients  
 
 
 Server Private Key -> sudo cat /etc/wireguard/server_private.key  
 
 ls -lah /etc/wireguard  
-Suna benzer olmali:  
+It should look similar to this:  
 >server_private.key  
 >server_public.key  
 >wg0.conf  
@@ -553,7 +553,7 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j A
 chmod 600 /etc/wireguard/wg0.conf  
 
 Test -> ls -l /etc/wireguard  
-wg0.conf ve server_private.key için sunlari gormelisin:  
+For wg0.conf and server_private.key, you should see the following:  
 >-rw-------  
 
 
