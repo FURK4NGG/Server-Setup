@@ -268,7 +268,7 @@ https://forms.domain/index.php/dashboard/view
 # -NextCloud Settings-  
 Add the users' home directory in Nextcloud? -> (No)  
 
-# -OnlyOffice Setup-  
+# 📦 OnlyOffice Setup  
 Verify that the server settings were successfully updated  
 Check healthcheck and api.js  
 ```
@@ -281,6 +281,9 @@ Verify that the secret keys match
 sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 ```
 Verify the SSL certificate  
+```
+curl -Iv https://docs.domain
+```
 Run the curl tests  
 ```
 sudo -i
@@ -300,6 +303,11 @@ Verify occ
 ```
 sudo -i
 php /var/www/nextcloud/occ status
+```
+
+Verify Server Time  
+```
+timedatectl status
 ```
 
 Final diagnosis
