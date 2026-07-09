@@ -628,31 +628,41 @@ QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf
 
 
 
-For linux  
-Arch Linux  
-sudo pacman -S wireguard-tools
-
-
-Ubuntu/Rasberry Pi OS
-sudo apt install wireguard  
-
-Fedora  
-sudo dnf install wireguard-tools  
-
 <details>
 <summary>Connect VPN</summary>
-
-   <details>
-   <summary>Android or iPhone</summary>
-       resmi WireGuard uygulamasını yükle.
+    <details>
+    <summary>Android or iPhone</summary>
+        Resmi WireGuard uygulamasını yükle
         Add Tunel(+)
-   </details>
-        
-   <details>
-   <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
+    </details>
+   
+    <details>
+    <summary>Arch</summary>
+        sudo pacman -S wireguard-tools
+    </details>
+   
+    <details>
+    <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
+        sudo apt install wireguard
+    </details>
 
-   </details>
+    <details>
+    <summary>Fedora</summary>
+        sudo dnf install wireguard-tools
+    </details>
 
+    Copy your laptop.conf to /etc/wireguard/wg0.conf in your PC
+    sudo chmod 600 /etc/wireguard/wg0.conf
+
+    Open VPN -> sudo wg-quick up wg0
+    Close VPN -> sudo wg-quick down wg0
+    Status -> sudo wg
+
+    Otomatic Connect when Pc is opened -> sudo systemctl enable wg-quick@wg0
+    Close that option -> sudo systemctl disable wg-quick@wg0
+
+    If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again
+    sudo wg-quick up wg0
 </details>
 
 wg  
