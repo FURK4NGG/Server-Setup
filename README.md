@@ -639,6 +639,7 @@ sudo apt install wireguard
 Fedora  
 sudo dnf install wireguard-tools  
 
+<details>
 <summary>Connect VPN</summary>
 
    <details>
