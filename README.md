@@ -579,61 +579,58 @@ sudo ss -lun | grep 51820
 <details>
 <summary>Create Client Key</summary>
 
-<details>
-<summary>For Mobile Clients</summary>
    <details>
-    <summary>Android or iPhone</summary>
-        Resmi WireGuard uygulamasını yükle
-        Add Tunel(+)
-        Scan the QR code
-   </details>
+   <summary>For Mobile Clients</summary>
+     
+   Resmi WireGuard uygulamasını yükle
+   Add Tunel(+)
+   Scan the QR code
+   
 
    <details>
    <summary>For Desktop Clients</summary>
    
-       <details>
-        <summary>Arch</summary>
-            sudo pacman -S wireguard-tools
-       </details>
+   <details>
+   <summary>Arch</summary>
+       sudo pacman -S wireguard-tools
+   </details>
        
-       <details>
-        <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
-            sudo apt install wireguard
-       </details>
+   <details>
+   <summary>Debian/Ubuntu/Raspberry Pi OS</summary>
+        sudo apt install wireguard
+   </details>
     
-       <details>
-        <summary>Fedora</summary>
-            sudo dnf install wireguard-tools
-       </details>
-    
-        In your PC  
-        sudo nano /etc/wireguard/wg0.conf  
-        ```
-        [Interface]
-        PrivateKey = DESKTOP_PRIVATE_KEY
-        Address = 10.8.0.3/24
-        PreUp = ip route add VPS_IP/32 via 192.168.1.1 dev enp11s0
-        PostDown = ip route del VPS_IP/32 via 192.168.1.1 dev enp11s0
+   <details>
+   <summary>Fedora</summary>
+        sudo dnf install wireguard-tools
+   </details>
+   In your PC  
+   sudo nano /etc/wireguard/wg0.conf  
+   ```
+   [Interface]
+   PrivateKey = DESKTOP_PRIVATE_KEY
+   Address = 10.8.0.3/24
+   PreUp = ip route add VPS_IP/32 via 192.168.1.1 dev enp11s0
+   PostDown = ip route del VPS_IP/32 via 192.168.1.1 dev enp11s0
         
-        [Peer]
-        PublicKey = SERVER_PUBLIC_KEY
-        Endpoint = VPS_IP:51820
-        AllowedIPs = 0.0.0.0/0
-        PersistentKeepalive = 25
-        ```
+   [Peer]
+   PublicKey = SERVER_PUBLIC_KEY
+   Endpoint = VPS_IP:51820
+   AllowedIPs = 0.0.0.0/0
+   PersistentKeepalive = 25
+    ```
+   sudo chmod 600 /etc/wireguard/wg0.conf
     
-        sudo chmod 600 /etc/wireguard/wg0.conf
+   Open VPN -> sudo wg-quick up wg0
+   Close VPN -> sudo wg-quick down wg0
+   Status -> sudo wg
     
-        Open VPN -> sudo wg-quick up wg0
-        Close VPN -> sudo wg-quick down wg0
-        Status -> sudo wg
+   Otomatic Connect when Pc is opened -> sudo systemctl enable wg-quick@wg0
+   Close that option -> sudo systemctl disable wg-quick@wg0
     
-        Otomatic Connect when Pc is opened -> sudo systemctl enable wg-quick@wg0
-        Close that option -> sudo systemctl disable wg-quick@wg0
-    
-        If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again
-        sudo wg-quick up wg0
-    </details>
+   If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again
+   sudo wg-quick up wg0 
+   </details>
 </details>
 
 
