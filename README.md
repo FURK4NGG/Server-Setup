@@ -68,7 +68,7 @@ Saat doğru mu
 Network doğru mu  
 
 
-# -CLOUDFLARE DNS RECORDS-  
+# CLOUDFLARE DNS RECORDS  
 Sign In into cloudflare and chose DNS Records>Connect a Domain  
 Configure AI training & search policies:
 Search:Allow  
@@ -140,7 +140,7 @@ Vert -> convert.domain
 
 
 
-# -Yunohost App Permissions-  
+# Yunohost App Permissions  
 *visitors(Ziyaretçiler)* *all_users(Tum yunohost kullanicilari)*
 
 Element -> all_users  
@@ -165,7 +165,7 @@ Display tile in portal -> (Yes)
 
 
 
-### -URL CERTIFICATES-
+## URL CERTIFICATES
 
 ✅ DNS A kaydı doğru.  
 ✅ DNS AAAA kaydı doğru.  
