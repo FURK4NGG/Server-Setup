@@ -581,10 +581,59 @@ sudo ss -lun | grep 51820
 
    <details>
    <summary>For Mobile Clients</summary>
+   # Create Client Key
+   cd /etc/wireguard  
+   install -m 600 /dev/null phone_private.key 
+   wg genkey | tee phone_private.key > /dev/null  
+   wg pubkey < phone_private.key > phone_public.key  
+   chmod 600 phone_private.key  
+   chmod 644 phone_public.key  
+        
+   Test -> ls -l phone_*  
+   >-rw------- phone_private.key  
+   >-rw-r--r-- phone_public.key  
+        
+        
+   Phone Public Key -> sudo cat phone_public.key  
+        
+   export TERM=xterm-256color  
+   nano /etc/wireguard/wg0.conf  
+   Add this into end of the page  
+     ```
+   [Peer]
+   # Phone
+   PublicKey = PHONE_PUBLIC_KEY
+   AllowedIPs = 10.8.0.2/32
+    ```
+   systemctl restart wg-quick@wg0  
+   wg  
+   >peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+   >allowed ips: 10.8.0.2/32  
+        
+   # Phone.conf
+   Phone Public Key -> sudo cat phone_private.key  
+   Server Public Key -> sudo cat /etc/wireguard/server_public.key  
+   export TERM=xterm-256color  
+   nano /etc/wireguard/phone.conf  
+    ```
+   [Interface]
+   PrivateKey = PHONE_PRIVATE_KEY
+   Address = 10.8.0.2/24
+   DNS = 1.1.1.1
+    
+   [Peer]
+   PublicKey = SERVER_PUBLIC_KEY
+   Endpoint = VPS_IP:51820
+   AllowedIPs = 0.0.0.0/0, ::/0
+   PersistentKeepalive = 25
+    ```
+   QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf  
+
+   
      
-   Resmi WireGuard uygulamasını yükle
-   Add Tunel(+)
-   Scan the QR code
+   Resmi WireGuard uygulamasını yükle  
+   Add Tunel(+)  
+   Scan the QR code  
    </details>
    
 
@@ -605,10 +654,48 @@ sudo ss -lun | grep 51820
    <summary>Fedora</summary>
         sudo dnf install wireguard-tools
    </details>
-   In your PC  
-   sudo nano /etc/wireguard/wg0.conf  
-   ```
-   [Interface]
+
+   # Create Desktop Client Key
+
+   cd /etc/wireguard  
+install -m 600 /dev/null desktop_private.key  
+wg genkey | tee desktop_private.key > /dev/null  
+wg pubkey < desktop_private.key > desktop_public.key  
+chmod 600 desktop_private.key  
+chmod 644 desktop_public.key  
+
+Test -> ls -l phone_*  
+>-rw------- desktop_private.key  
+>-rw-r--r-- desktop_public.key  
+
+
+Desktop Public Key -> sudo cat desktop_public.key  
+
+export TERM=xterm-256color  
+nano /etc/wireguard/wg0.conf  
+Add this into end of the page  
+```
+[Peer]
+# Desktop
+PublicKey = DESKTOP_PUBLIC_KEY
+AllowedIPs = 10.8.0.3/32
+```
+
+systemctl restart wg-quick@wg0  
+wg  
+>peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+>allowed ips: 10.8.0.2/32  
+
+
+# desktop.conf
+Desktop Public Key -> sudo cat desktop_private.key  
+Server Public Key -> sudo cat /etc/wireguard/server_public.key  
+
+In your PC  
+sudo nano /etc/wireguard/wg0.conf  
+
+```
+[Interface]
    PrivateKey = DESKTOP_PRIVATE_KEY
    Address = 10.8.0.3/24
    PreUp = ip route add VPS_IP/32 via 192.168.1.1 dev enp11s0
@@ -619,7 +706,9 @@ sudo ss -lun | grep 51820
    Endpoint = VPS_IP:51820
    AllowedIPs = 0.0.0.0/0
    PersistentKeepalive = 25
-    ```
+```
+
+
    sudo chmod 600 /etc/wireguard/wg0.conf
     
    Open VPN -> sudo wg-quick up wg0
@@ -635,57 +724,7 @@ sudo ss -lun | grep 51820
 </details>
 
 
-# Create Client Key
-cd /etc/wireguard  
-install -m 600 /dev/null phone_private.key  
-wg genkey | tee phone_private.key > /dev/null  
-wg pubkey < phone_private.key > phone_public.key  
-chmod 600 phone_private.key  
-chmod 644 phone_public.key  
 
-Test -> ls -l phone_*  
->-rw------- phone_private.key  
->-rw-r--r-- phone_public.key  
-
-
-Phone Public Key -> sudo cat phone_public.key  
-
-export TERM=xterm-256color  
-nano /etc/wireguard/wg0.conf  
-Add this into end of the page  
-```
-[Peer]
-# Phone
-PublicKey = PHONE_PUBLIC_KEY
-AllowedIPs = 10.8.0.2/32
-```
-
-systemctl restart wg-quick@wg0  
-wg  
->peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
->allowed ips: 10.8.0.2/32  
-
-
-# Phone.conf
-Phone Public Key -> sudo cat phone_private.key  
-Server Public Key -> sudo cat /etc/wireguard/server_public.key  
-export TERM=xterm-256color  
-nano /etc/wireguard/phone.conf  
-
-```
-[Interface]
-PrivateKey = PHONE_PRIVATE_KEY
-Address = 10.8.0.2/24
-DNS = 1.1.1.1
-
-[Peer]
-PublicKey = SERVER_PUBLIC_KEY
-Endpoint = VPS_IP:51820
-AllowedIPs = 0.0.0.0/0, ::/0
-PersistentKeepalive = 25
-```
-
-QR Code -> qrencode -t ansiutf8 < /etc/wireguard/phone.conf  
 
 
 
