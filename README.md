@@ -400,7 +400,7 @@ Require verification: ON
 Allow self signed: OFF  
 
 
-# SMTP SETTINGS
+## SMTP SETTINGS
 Server: domain  
 
 Port: 587  
@@ -443,7 +443,7 @@ SEO TEST -> https://www.seobility.net/en/seocheck/
 Web Page Quality -> https://pagespeed.web.dev/  
 
 
-If its all good  
+## If its all good  
 dmarc@domain diye yeni hesap acmali yunohostta  
 TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
@@ -496,7 +496,6 @@ Test Et>wg --version
 
 export TERM=xterm-256color  
 sudo nano /etc/sysctl.conf  
-
 Sunlarin oldugundan emin ol:  
 >net.ipv4.ip_forward=1  
 >net.ipv6.conf.all.forwarding=1  
@@ -535,7 +534,7 @@ elif(ens18):
 
 
 
-# Create wg0.conf 
+## Create wg0.conf 
 export TERM=xterm-256color  
 nano /etc/wireguard/wg0.conf  
 chmod 600 /etc/wireguard/wg0.conf  
@@ -556,7 +555,7 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j A
 IPV6 eklenecek  
 
 
-# Servisi Etkinlestir
+## Servisi Etkinlestir
 systemctl enable wg-quick@wg0  
 systemctl start wg-quick@wg0  
 
@@ -582,7 +581,7 @@ sudo ss -lun | grep 51820
    <details>
    <summary>For Mobile Clients</summary>
        
-   # Create Mobile Client Key  
+   ## Create Mobile Client Key  
        
    cd /etc/wireguard  
    umask 077  
@@ -612,7 +611,7 @@ sudo ss -lun | grep 51820
    >peer: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
    >allowed ips: 10.8.0.2/32  
         
-   # Phone.conf
+   ## Phone.conf
    Phone Private Key -> sudo cat phone_private.key  
    Server Public Key -> sudo cat /etc/wireguard/server_public.key  
    export TERM=xterm-256color  
@@ -638,7 +637,7 @@ sudo ss -lun | grep 51820
    Scan the QR code  
    🎉 You are ready to use yor VPN  
 
-   # Delete Mobile Client Key
+   ## Delete Mobile Client Key
 ```
    rm -f \
    /etc/wireguard/phone_private.key \
@@ -674,7 +673,7 @@ sudo ss -lun | grep 51820
         sudo dnf install wireguard-tools
    </details>
 
-   # Create Desktop Client Key
+   ## Create Desktop Client Key
 
    cd /etc/wireguard  
    umask 077  
@@ -706,7 +705,7 @@ sudo ss -lun | grep 51820
    >allowed ips: 10.8.0.3/32  
 
 
-   # desktop.conf
+   ## desktop.conf
    Desktop Private Key -> sudo cat desktop_private.key  
    Server Public Key -> sudo cat /etc/wireguard/server_public.key  
 
@@ -742,7 +741,7 @@ sudo ss -lun | grep 51820
 
    🎉 You are ready to use yor VPN  
 
-   # Delete Mobile Client Key
+   ## Delete Mobile Client Key
 ```
    rm -f \
    /etc/wireguard/desktop_private.key \
@@ -783,7 +782,7 @@ Full Tunnel Mode -> AllowedIPs = 0.0.0.0/0 Bütün internet trafiğin VPN'den ge
 Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den geçer.  
 
 
-# Delete Server Key
+## Delete Server Key
 ```
    rm -f \
    /etc/wireguard/server_private.key \
