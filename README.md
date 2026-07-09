@@ -126,7 +126,8 @@ apt update && apt full-upgrade -y
 
 curl https://install.yunohost.org | bash  
 
-Localden yunohost islemlerini yaptiktan sonra actigimiz dns kayitlari icin su domaineri aciyoruz:  
+
+After completing the local YunoHost configuration, create the following domains from 'YunoHost>Domains' for the DNS records that we created:  
 Element -> chat.domain and Synapse -> syn.domain  
 FressRSS -> rss.domain  
 Gitea -> git.domain  
@@ -172,14 +173,14 @@ Display tile in portal -> (Yes)
 
 ## URL CERTIFICATES
 
-✅ DNS A kaydı doğru.  
-✅ DNS AAAA kaydı doğru.  
-✅ Nameserver'lar değiştirildi.  
-✅ HTTP reachable from outside.  
-✅ Nginx çalışıyor.  
-✅ Let's Encrypt API'sine sunucu bağlanabiliyor.  
-✅ Cloudflare proxy kapalı (DNS only).  
-Nameserver değişikliğinin tamamen yayılmamış olmasının ardından,  
+✅ DNS A record is correct.  
+✅ DNS AAAA record is correct.  
+✅ The nameservers have been updated.  
+✅ HTTP is reachable from outside.  
+✅ Nginx is running.  
+✅ The server can connect to the Let's Encrypt API.  
+✅ Cloudflare proxy is disabled (DNS only).  
+After the nameserver changes have fully propagated,  
 
 sudo yunohost domain cert install  
 
@@ -363,7 +364,7 @@ doveadm auth test furk4ngg@domain
 >auth succeeded
 
 
-LDAP mail adresini görüyor mu? ->  
+Can LDAP see the email address? ->  
 postmap -q "furk4ngg@domain" ldap:/etc/postfix/ldap-accounts.cf  
 
 
@@ -448,7 +449,7 @@ Web Page Quality -> https://pagespeed.web.dev/
 
 
 ## If its all good  
-dmarc@domain diye yeni hesap acmali yunohostta  
+Create a new account named dmarc@domain in YunoHost.  
 TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
 
@@ -467,7 +468,7 @@ openssl s_client -starttls smtp -connect mail.domain:587
 Type>EHLO test 
 >250-mail.domain  
 
-PTR Test
+PTR Test  
 dig -x <IPv4> +short  
 >mail.domain  
 
@@ -560,7 +561,7 @@ For wg0.conf and server_private.key, you should see the following:
 IPV6 eklenecek  
 
 
-## Servisi Etkinlestir
+## Enable the service
 systemctl enable wg-quick@wg0  
 systemctl start wg-quick@wg0  
 
@@ -637,7 +638,7 @@ sudo ss -lun | grep 51820
 
    
      
-   Resmi WireGuard uygulamasını yükle  
+   Install the official WireGuard application  
    Add Tunel(+)  
    Scan the QR code  
    🎉 You are ready to use yor VPN  
@@ -778,7 +779,7 @@ Test -> https://ifconfig.me
 
 DNS Leak Test -> https://browserleaks.com/dns  
 
-⚠️ Eger yeni cihaz clienti eklemek istiyorsan yeni key olusturup VPN Agini(10.8.0.2, 10.8.0.3, 10.8.0.4...) degistirip yukaridaki adimlari phone/desktop yerine baska isimlendirmeler yaparak izleyebilirsin.  
+⚠️ If you want to add a new client device, generate a new key pair, assign a new VPN address (10.8.0.2, 10.8.0.3, 10.8.0.4, ...), and repeat the steps above using a different name instead of phone or desktop.  
 
 
 phone.conf/desktop.conf  
