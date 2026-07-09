@@ -635,7 +635,6 @@ sudo ss -lun | grep 51820
         sudo wg-quick up wg0
     </details>
 </details>
-</details>
 
 
 # Create Client Key
