@@ -582,6 +582,7 @@ sudo ss -lun | grep 51820
    <details>
    <summary>For Mobile Clients</summary>
    # Create Client Key  
+       
    cd /etc/wireguard  
    install -m 600 /dev/null phone_private.key  
    wg genkey | tee phone_private.key > /dev/null  
