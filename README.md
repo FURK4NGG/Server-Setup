@@ -282,7 +282,7 @@ sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 ```
 >"secret": {  
 >        "browser": {  
->          "string": "secret_key"
+>          "string": "secret_key"  
 Paste that key into 'Nextcloud>Administration Settings>ONLYOFFICE'  
 >ONLYOFFICE Docs address: https://docs.domain  
 >Secret Key: Paste secret_key here  
