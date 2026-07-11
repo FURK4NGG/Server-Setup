@@ -285,7 +285,14 @@ sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 >          "string": "secret_key"  
 Paste that key into 'Nextcloud>Administration Settings>ONLYOFFICE'  
 >ONLYOFFICE Docs address: https://docs.domain  
->Secret Key: Paste secret_key here  
+>Secret Key: Paste secret_key here
+
+Test>
+```
+sudo yunohost app shell nextcloud
+php occ config:app:get onlyoffice jwt_secret
+```
+>secret key  
 
 Verify the SSL certificate  
 ```
