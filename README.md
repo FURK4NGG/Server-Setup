@@ -280,6 +280,9 @@ Verify that the secret keys match
 ```
 sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 ```
+>"secret": {
+>        "browser": {
+>          "string": "
 Paste that key into 'Nextcloud>Administration Settings>ONLYOFFICE'  
 >ONLYOFFICE Docs address: https://docs.domain
 >Secret Key: Paste here
