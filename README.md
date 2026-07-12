@@ -858,7 +858,7 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 
 Replace only the password: value in the following section:  
 >users:
->  - name: USERNAME
+>    name: USERNAME
 >    password: $2y$10$...
 
 
