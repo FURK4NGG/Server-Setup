@@ -529,7 +529,7 @@ You can connect and use your mail with these mail providers:Thunderbird,Gmail,Ou
 
 sudo apt update  
 sudo apt install wireguard qrencode  
-Test Et>wg --version  
+Test>wg --version  
 >wireguard-tools v1.0.20210914 - https://git.zx2c4.com/wireguard-tools/  
 
 
