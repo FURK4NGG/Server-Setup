@@ -750,6 +750,7 @@ sudo ss -lun | grep 51820
    Server Public Key -> sudo cat /etc/wireguard/server_public.key  
 
    In your PC  
+   export TERM=xterm-256color  
    sudo nano /etc/wireguard/wg0.conf  
 
 ```
@@ -830,3 +831,44 @@ Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den
    /etc/wireguard/wg0.conf
 ```
    sudo systemctl disable --now wg-quick@wg0  
+
+# -AdGuard Settings-  
+Bind to public IP addresses? (If you have an private IP choose NO) -> (Yes)  
+Enable DNS-over-HTTPS/TLS/QUIC? -> (No)  
+
+```
+sudo apt update
+sudo apt install apache2-utils
+```
+sudo grep -A4 '^users:' /var/www/adguardhome/AdGuardHome.yaml  
+>See current user
+
+New Password
+```
+htpasswd -B -C 10 -n -b USERNAME 'NEW_PASSWORD'
+```
+>USERNAME:$2y$10$...
+
+sudo systemctl stop adguardhome  
+
+sudo cp /var/www/adguardhome/AdGuardHome.yaml \  
+/var/www/adguardhome/AdGuardHome.yaml.bak  
+
+sudo nano /var/www/adguardhome/AdGuardHome.yaml  
+
+Replace only the password: value in the following section:  
+>users:
+  - name: KULLANICI_ADI
+    password: $2y$10$...
+
+
+```
+sudo chown adguardhome:adguardhome /var/www/adguardhome/AdGuardHome.yaml
+sudo systemctl start adguardhome
+sudo systemctl status adguardhome --no-pager
+```
+
+Login Page -> https://ads.domain/login.html  
+
+
+Close uBlock origin or other 3rd party blockers to load login page  
