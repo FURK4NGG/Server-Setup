@@ -841,7 +841,7 @@ sudo apt update
 sudo apt install apache2-utils
 ```
 sudo grep -A4 '^users:' /var/www/adguardhome/AdGuardHome.yaml  
->See current user
+>Should see current user
 
 New Password
 ```
