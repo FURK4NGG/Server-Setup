@@ -961,7 +961,43 @@ Automatic DNS configuration depends on the Linux distribution and the DNS manage
 <details>
 <summary>Arch Linux</summary>
 Delete DNS = 10.8.0.1  
-    sudo wg-quick up wg0
+   
+Eski bağlantı varsa sil  
+nmcli connection delete wg0  
+
+WireGuard yapılandırmasını içe aktar  
+nmcli connection import type wireguard file /etc/wireguard/wg0.conf  
+
+DNS'i NetworkManager yönetsin  
+nmcli connection show  
+
+```
+nmcli connection modify wg0 ipv4.ignore-auto-dns yes  
+nmcli connection modify wg0 ipv4.dns "10.8.0.1"  
+```
+
+IPV6  
+```
+nmcli connection modify wg0 ipv6.ignore-auto-dns yes  
+nmcli connection modify wg0 ipv6.dns "::"  
+```
+
+No IPV6  
+```
+nmcli connection modify wg0 ipv6.method disabled
+```
+
+
+Open VPN -> nmcli connection up wg0  
+Close VPN -> nmcli connection down wg0  
+
+Test(PC)>
+cat /etc/resolv.conf
+>Open VPN  
+>Should see 10.8.0.1  
+
+>Closed VPN
+>Should just see 192.168.1.1  
 </details>
 
 
