@@ -858,8 +858,8 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 
 Replace only the password: value in the following section:  
 >users:
-  - name: KULLANICI_ADI
-    password: $2y$10$...
+>  - name: USERNAME
+>    password: $2y$10$...
 
 
 ```
@@ -868,7 +868,9 @@ sudo systemctl start adguardhome
 sudo systemctl status adguardhome --no-pager
 ```
 
+
+Close uBlock origin or other 3rd party blockers to load login page  
+
 Login Page -> https://ads.domain/login.html  
 
 
-Close uBlock origin or other 3rd party blockers to load login page  
