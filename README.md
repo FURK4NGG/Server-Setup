@@ -767,17 +767,17 @@ sudo ss -lun | grep 51820
 ```
 
 
-   sudo chmod 600 /etc/wireguard/wg0.conf
+   sudo chmod 600 /etc/wireguard/wg0.conf  
     
-   Open VPN -> sudo wg-quick up wg0
-   Close VPN -> sudo wg-quick down wg0
+   Open VPN -> sudo wg-quick up wg0  
+   Close VPN -> sudo wg-quick down wg0  
    Status -> sudo wg
     
-   Otomatic Connect when Pc is opened -> sudo systemctl enable wg-quick@wg0
-   Close that option -> sudo systemctl disable wg-quick@wg0
+   Otomatic Connect when Pc is opened -> sudo systemctl enable wg-quick@wg0  
+   Close that option -> sudo systemctl disable wg-quick@wg0  
     
-   If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again
-   sudo wg-quick up wg0 
+   If you get connection error delete 'DNS = 1.1.1.1' from your desktop.conf and try again  
+   sudo wg-quick up wg0  
 
    🎉 You are ready to use yor VPN  
 
