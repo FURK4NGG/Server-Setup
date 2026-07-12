@@ -722,7 +722,7 @@ sudo ss -lun | grep 51820
    chmod 600 desktop_private.key  
    chmod 644 desktop_public.key  
 
-   Test -> ls -l phone_*  
+   Test -> ls -l  
    >-rw------- desktop_private.key  
    >-rw-r--r-- desktop_public.key  
 
