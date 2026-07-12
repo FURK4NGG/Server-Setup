@@ -837,6 +837,10 @@ Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den
 Bind to public IP addresses? (If you have an private IP choose NO) -> (Yes)  
 Enable DNS-over-HTTPS/TLS/QUIC? -> (No)  
 
+Remove the following lines if they exist(desktop.conf)  
+>PreUp = ...  
+>PostDown = ...  
+
 ```
 sudo apt update
 sudo apt install apache2-utils
@@ -868,6 +872,128 @@ sudo chown adguardhome:adguardhome /var/www/adguardhome/AdGuardHome.yaml
 sudo systemctl start adguardhome
 sudo systemctl status adguardhome --no-pager
 ```
+
+sudo nft -a list chain inet filter input  
+Delete the rules that allow TCP/UDP port 53 for everyone.  
+>sudo nft delete rule inet filter input handle 6  
+>sudo nft delete rule inet filter input handle 8  
+
+```
+sudo nft add rule inet filter input \
+tcp dport { 22, 25, 80, 443, 587, 993, 5349, 5350, 7881, 8448 } \
+counter accept
+```
+
+```
+sudo nft add rule inet filter input \
+udp dport { 1900, 5349, 5350, 5353, 51820, 55354 } \
+counter accept
+```
+
+Ardından WireGuard istemcilerine DNS izni:  
+```
+sudo nft add rule inet filter input \
+iifname "wg0" ip saddr 10.8.0.0/24 udp dport 53 counter accept
+```
+```
+sudo nft add rule inet filter input \
+iifname "wg0" ip saddr 10.8.0.0/24 tcp dport 53 counter accept
+```
+
+En son herkesi engelle:  
+```
+sudo nft add rule inet filter input udp dport 53 counter drop
+```
+```
+sudo nft add rule inet filter input tcp dport 53 counter drop
+```
+
+Test>
+```
+sudo nft -a list chain inet filter input
+```
+
+## Bind AdGuard to the VPN interface  
+sudo nano /var/www/adguardhome/AdGuardHome.yaml  
+>bind_hosts:  
+>- SERVER_PUBLIC_IP  
+>- SERVER_IPV6  
+>10.8.0.1 -> Add this  
+
+sudo systemctl restart adguardhome  
+
+sudo ss -lunpt | grep ':53'  
+>SERVER_PUBLIC_IP:53
+>10.8.0.1:53
+
+Test>ping 10.8.0.1  
+
+dig google.com  
+>SERVER: 10.8.0.1#53  
+
+
+## Restrict DNS access to WireGuard clients  
+localhost  
+WireGuard interface (10.8.0.0/24)  
+
+sudo nft -a list chain inet filter input  
+>WireGuard DNS → ACCEPT  
+>Localhost DNS → ACCEPT  
+>Public DNS → DROP  
+
+
+DNS = 10.8.0.1  
+
+On Linux, automatic DNS configuration depends on the distribution's DNS manager (systemd-resolved, NetworkManager, openresolv, etc.). If DNS is not applied automatically, configure your system's DNS resolver manually or use your distribution's recommended integration.  
+
+
+## Linux DNS integration
+<details>
+<summary>General Linux</summary>
+The VPN can always be started with:
+
+Open VPN -> sudo wg-quick up wg0  
+Close VPN -> sudo wg-quick down wg0  
+Status -> sudo wg
+
+Automatic DNS configuration depends on the Linux distribution and the DNS manager in use.
+</details>
+<details>
+<summary>Arch Linux</summary>
+Delete DNS = 10.8.0.1  
+    sudo wg-quick up wg0
+</details>
+
+
+## Verify the VPN tunnel  
+```
+ping 10.8.0.1
+```
+>0% packet loss
+
+## Verify AdGuard  
+```
+dig @10.8.0.1 google.com
+```
+>status: NOERROR  
+>SERVER: 10.8.0.1#53
+
+## Verify the system DNS  
+```
+dig google.com
+```
+>SERVER: 10.8.0.1#53
+
+## Verify WireGuard(Server)  
+sudo wg
+>latest handshake:
+
+## Verify that public DNS is blocked  
+dig @SERVER_PUBLIC_IP google.com  
+>no servers could be reached  
+>or  
+>connection timed out  
+
 
 
 Close uBlock origin or other 3rd party blockers to load login page  
