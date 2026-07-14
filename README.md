@@ -1129,6 +1129,7 @@ sudo nft -a list chain inet filter input
 >localhost ACCEPT  
 >public DNS DROP  
 
+DNS Checker -> https://dnscheck.tools/  
 
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
