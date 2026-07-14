@@ -955,8 +955,7 @@ Expected result:
 ✔ Everyone else -> DROP  
 
 
-add  
-(Client / PC)  
+Add into wg0.conf (Client / PC)  
 DNS = 10.8.0.1  
 to the [Interface] section  
 
