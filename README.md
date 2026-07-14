@@ -1017,9 +1017,9 @@ Open VPN -> nmcli connection up wg0
 Close VPN -> nmcli connection down wg0    
 
 Test(PC)>  
-Open the VPN 
-cat /etc/resolv.conf   
->Should see 10.8.0.1    
+Open the VPN  
+cat /etc/resolv.conf  
+>Should see 10.8.0.1  
 
 Close the VPN  
 >Should just see 192.168.1.1  
