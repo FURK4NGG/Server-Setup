@@ -930,9 +930,9 @@ sudo nft -a list chain inet filter input
 ## Bind AdGuard to the VPN interface  
 sudo nano /var/www/adguardhome/AdGuardHome.yaml  
 >bind_hosts:  
-> /- SERVER_PUBLIC_IP  
-> -/ SERVER_IPV6  
-> -\ 10.8.0.1 -> Add this  
+> \- SERVER_PUBLIC_IP  
+> \- SERVER_IPV6  
+> 10.8.0.1 -> Add this  
 
 sudo systemctl restart adguardhome  
 
