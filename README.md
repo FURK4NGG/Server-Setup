@@ -839,7 +839,7 @@ Bind to public IP addresses? (If you have an private IP choose NO) -> (Yes)
 Enable DNS-over-HTTPS/TLS/QUIC? -> (No)  
 
 (Client / PC)  
-Remove the following lines if they exist(desktop.conf)  
+Remove the following lines if they exist(wg0.conf)  
 >PreUp = ...  
 >PostDown = ...  
 
