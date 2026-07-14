@@ -983,13 +983,13 @@ NetworkManager will manage DNS automatically.
 Delete DNS = 10.8.0.1  
 If you use NetworkManager, remove the DNS = 10.8.0.1 line from the WireGuard configuration. NetworkManager will manage the DNS settings instead.  
    
-Eski bağlantı varsa sil  
+Delete the existing WireGuard connection if it already exists  
 nmcli connection delete wg0  
 
-WireGuard yapılandırmasını içe aktar  
+Import the WireGuard configuration  
 nmcli connection import type wireguard file /etc/wireguard/wg0.conf  
 
-DNS'i NetworkManager yönetsin  
+Let NetworkManager manage the DNS settings  
 nmcli connection show  
 
 ```
