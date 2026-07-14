@@ -474,6 +474,7 @@ sudo opendkim-testkey -d domain -s mail -vvv
 
 # TEST ADRESSES
 DNS Checker -> https://mxtoolbox.com/DNSLookup.aspx  
+DNS Checker -> https://dnscheck.tools/  
 Validate your DKIM and SPF DNS records. -> https://dmarcdkim.com/tools/check-dkim-record?domain=domain  
 Mail Tester -> https://www.mail-tester.com/  
 MX Records and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
@@ -946,17 +947,13 @@ dig google.com
 
 
 ## Restrict DNS access to WireGuard clients  
-localhost  
+sudo nft -a list chain inet filter input  
 Expected result:
 
 ✔ Localhost -> ACCEPT  
 ✔ WireGuard (10.8.0.0/24) -> ACCEPT  
 ✔ Everyone else -> DROP  
 
-sudo nft -a list chain inet filter input  
->WireGuard DNS → ACCEPT  
->Localhost DNS → ACCEPT  
->Public DNS → DROP  
 
 add  
 (Client / PC)  
@@ -984,6 +981,7 @@ NetworkManager will manage DNS automatically.
     
 (Client / PC)  
 Delete DNS = 10.8.0.1  
+If you use NetworkManager, remove the DNS = 10.8.0.1 line from the WireGuard configuration. NetworkManager will manage the DNS settings instead.  
    
 Eski bağlantı varsa sil  
 nmcli connection delete wg0  
@@ -1029,11 +1027,17 @@ nmcli connection show wg0
 </details>
 
 
-## Verify the VPN tunnel (Client / PC)  
+## Verify the VPN tunnel (Client / PC)
+Open the VPN  
 ```
 ping 10.8.0.1
 ```
 >0% packet loss
+
+## Verify Internet Routing (Client / PC)  
+curl -4 ifconfig.me  
+When the VPN is enabled, the output should be the public IPv4 address of the VPS.  
+When the VPN is disabled, the output should return to the public IP address of the local internet connection.  
 
 ## Verify AdGuard (VPS)  
 ```
@@ -1048,7 +1052,16 @@ dig google.com
 ```
 >SERVER: 10.8.0.1#53
 
-## Verify WireGuard(Server)  
+## Verify the AdGuard Home Dashboard  
+Open the AdGuard Home dashboard and go to: Query Log  
+
+Refresh a few websites on the client device.  
+
+Expected result:  
+New DNS queries from the WireGuard client should appear in the Query Log.  
+The client address should normally be shown as a WireGuard address such as 10.8.0.3.  
+
+## Verify WireGuard(VPS)  
 sudo wg
 >latest handshake:
 
@@ -1056,7 +1069,14 @@ sudo wg
 dig @SERVER_PUBLIC_IP google.com  
 >no servers could be reached  
 >or  
->connection timed out  
+>connection timed out
+
+## Mail DNS  
+dig @10.8.0.1 MX srv1.mail-tester.com  
+>status: NOERROR
+
+dig @127.0.0.1 MX srv1.mail-tester.com  
+>... timed out  
 
 
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
