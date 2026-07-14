@@ -939,7 +939,7 @@ sudo ss -lunpt | grep ':53'
 >SERVER_PUBLIC_IP:53
 >10.8.0.1:53
 
-Test>ping 10.8.0.1  
+Test(PC)>ping 10.8.0.1  
 
 dig google.com  
 >SERVER: 10.8.0.1#53  
@@ -979,6 +979,9 @@ Automatic DNS configuration depends on the Linux distribution and the DNS manage
 </details>
 <details>
 <summary>Arch Linux</summary>
+Do not install openresolv when using NetworkManager to manage WireGuard connections.  
+NetworkManager will manage DNS automatically.  
+    
 (Client / PC)  
 Delete DNS = 10.8.0.1  
    
@@ -1019,17 +1022,20 @@ cat /etc/resolv.conf
 >Should see 10.8.0.1    
 
 Close the VPN  
->Should just see 192.168.1.1    
+>Should just see 192.168.1.1  
+
+nmcli connection show wg0  
+>ipv4.dns: 10.8.0.1  
 </details>
 
 
-## Verify the VPN tunnel  
+## Verify the VPN tunnel (Client / PC)  
 ```
 ping 10.8.0.1
 ```
 >0% packet loss
 
-## Verify AdGuard  
+## Verify AdGuard (VPS)  
 ```
 dig @10.8.0.1 google.com
 ```
@@ -1046,15 +1052,14 @@ dig google.com
 sudo wg
 >latest handshake:
 
-## Verify that public DNS is blocked  
+## Verify that public DNS is blocked (Client / PC outside the VPN)  
 dig @SERVER_PUBLIC_IP google.com  
 >no servers could be reached  
 >or  
 >connection timed out  
 
 
-
-Close uBlock origin or other 3rd party blockers to load login page  
+Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
 Login Page -> https://ads.domain/login.html  
 
