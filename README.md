@@ -1027,12 +1027,12 @@ nmcli connection show wg0
 </details>
 
 
-## Verify the VPN tunnel (Client / PC)
+## Verify the VPN tunnel (Client / PC)  
 Open the VPN  
 ```
-ping 10.8.0.1
+ping 10.8.0.1  
 ```
->0% packet loss
+>0% packet loss  
 
 ## Verify Internet Routing (Client / PC)  
 curl -4 ifconfig.me  
@@ -1041,16 +1041,16 @@ When the VPN is disabled, the output should return to the public IP address of t
 
 ## Verify AdGuard (VPS)  
 ```
-dig @10.8.0.1 google.com
+dig @10.8.0.1 google.com  
 ```
 >status: NOERROR  
->SERVER: 10.8.0.1#53
+>SERVER: 10.8.0.1#53  
 
 ## Verify the system DNS  
 ```
-dig google.com
+dig google.com  
 ```
->SERVER: 10.8.0.1#53
+>SERVER: 10.8.0.1#53  
 
 ## Verify the AdGuard Home Dashboard  
 Open the AdGuard Home dashboard and go to: Query Log  
@@ -1062,25 +1062,72 @@ New DNS queries from the WireGuard client should appear in the Query Log.
 The client address should normally be shown as a WireGuard address such as 10.8.0.3.  
 
 ## Verify WireGuard(VPS)  
-sudo wg
->latest handshake:
+sudo wg  
+>latest handshake:  
 
 ## Verify that public DNS is blocked (Client / PC outside the VPN)  
 dig @SERVER_PUBLIC_IP google.com  
 >no servers could be reached  
 >or  
->connection timed out
+>connection timed out  
 
-## Mail DNS  
+## Fix local DNS resolution for mail services (VPS)  
 dig @10.8.0.1 MX srv1.mail-tester.com  
->status: NOERROR
+>status: NOERROR  
 
 dig @127.0.0.1 MX srv1.mail-tester.com  
 >... timed out  
+
+sudo nano /etc/dnsmasq.d/99-adguard-upstream.conf  
+```
+no-resolv  
+server=10.8.0.1  
+```
+
+sudo dnsmasq --test  
+>syntax check OK  
+
+sudo systemctl restart dnsmasq  
+sudo systemctl status dnsmasq --no-pager  
+
+Test>  
+dig @127.0.0.1 MX srv1.mail-tester.com  
+dig MX srv1.mail-tester.com  
+>status: NOERROR for both of them  
+
+```
+sudo postqueue -f  
+sudo tail -f /var/log/mail.log  
+```
+>status=sent  
+
+
+sudo systemctl status dnsmasq  
+>active (running)  
+
+
+## Make nftables rules persistent (VPS)  
+
+Save the current rules:  
+sudo nft list ruleset | sudo tee /etc/nftables.conf >/dev/null  
+
+sudo cat /etc/nftables.conf  
+
+Check the service is enabled:  
+sudo systemctl enable nftables  
+sudo systemctl status nftables  
+
+Reboot system:  
+sudo reboot  
+
+After system:  
+sudo nft list ruleset  
+sudo nft -a list chain inet filter input  
+>WireGuard DNS ACCEPT  
+>localhost ACCEPT  
+>public DNS DROP  
 
 
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
 Login Page -> https://ads.domain/login.html  
-
-
