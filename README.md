@@ -837,10 +837,13 @@ Split Tunnel Mode -> AllowedIPs = 10.8.0.0/24 Sadece sunucuna ait trafik VPN'den
 Bind to public IP addresses? (If you have an private IP choose NO) -> (Yes)  
 Enable DNS-over-HTTPS/TLS/QUIC? -> (No)  
 
+(Client / PC)  
 Remove the following lines if they exist(desktop.conf)  
 >PreUp = ...  
 >PostDown = ...  
 
+(VPS)  
+Debian / Ubuntu  
 ```
 sudo apt update
 sudo apt install apache2-utils
@@ -854,7 +857,15 @@ htpasswd -B -C 10 -n -b USERNAME 'NEW_PASSWORD'
 ```
 >USERNAME:$2y$10$...
 
+```
 sudo systemctl stop adguardhome  
+```
+
+(VPS)  
+Restart AdGuard Home  
+```
+sudo systemctl restart adguardhome
+```
 
 sudo cp /var/www/adguardhome/AdGuardHome.yaml \  
 /var/www/adguardhome/AdGuardHome.yaml.bak  
@@ -877,6 +888,8 @@ sudo nft -a list chain inet filter input
 Delete the rules that allow TCP/UDP port 53 for everyone.  
 >sudo nft delete rule inet filter input handle 6  
 >sudo nft delete rule inet filter input handle 8  
+>Delete the existing TCP/UDP port 53 allow rules.  
+>Recreate the TCP/UDP allow rules without port 53.  
 
 ```
 sudo nft add rule inet filter input \
@@ -890,7 +903,7 @@ udp dport { 1900, 5349, 5350, 5353, 51820, 55354 } \
 counter accept
 ```
 
-Ardından WireGuard istemcilerine DNS izni:  
+Then allow DNS access only for WireGuard clients:  
 ```
 sudo nft add rule inet filter input \
 iifname "wg0" ip saddr 10.8.0.0/24 udp dport 53 counter accept
@@ -900,7 +913,7 @@ sudo nft add rule inet filter input \
 iifname "wg0" ip saddr 10.8.0.0/24 tcp dport 53 counter accept
 ```
 
-En son herkesi engelle:  
+Finally, block DNS access for everyone else:  
 ```
 sudo nft add rule inet filter input udp dport 53 counter drop
 ```
@@ -934,15 +947,21 @@ dig google.com
 
 ## Restrict DNS access to WireGuard clients  
 localhost  
-WireGuard interface (10.8.0.0/24)  
+Expected result:
+
+✔ Localhost -> ACCEPT  
+✔ WireGuard (10.8.0.0/24) -> ACCEPT  
+✔ Everyone else -> DROP  
 
 sudo nft -a list chain inet filter input  
 >WireGuard DNS → ACCEPT  
 >Localhost DNS → ACCEPT  
 >Public DNS → DROP  
 
-
+add  
+(Client / PC)  
 DNS = 10.8.0.1  
+to the [Interface] section  
 
 On Linux, automatic DNS configuration depends on the distribution's DNS manager (systemd-resolved, NetworkManager, openresolv, etc.). If DNS is not applied automatically, configure your system's DNS resolver manually or use your distribution's recommended integration.  
 
@@ -960,6 +979,7 @@ Automatic DNS configuration depends on the Linux distribution and the DNS manage
 </details>
 <details>
 <summary>Arch Linux</summary>
+(Client / PC)  
 Delete DNS = 10.8.0.1  
    
 Eski bağlantı varsa sil  
@@ -986,18 +1006,20 @@ No IPV6
 ```
 nmcli connection modify wg0 ipv6.method disabled
 ```
+(Client / PC)  
+Stop using wg-quick  
+NetworkManager will manage the WireGuard connection  
 
+Open VPN -> nmcli connection up wg0   
+Close VPN -> nmcli connection down wg0    
 
-Open VPN -> nmcli connection up wg0  
-Close VPN -> nmcli connection down wg0  
+Test(PC)>  
+Open the VPN 
+cat /etc/resolv.conf   
+>Should see 10.8.0.1    
 
-Test(PC)>
-cat /etc/resolv.conf
->Open VPN  
->Should see 10.8.0.1  
-
->Closed VPN
->Should just see 192.168.1.1  
+Close the VPN  
+>Should just see 192.168.1.1    
 </details>
 
 
