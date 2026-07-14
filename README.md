@@ -965,17 +965,19 @@ On Linux, automatic DNS configuration depends on the distribution's DNS manager 
 
 ## Linux DNS integration
 <details>
-<summary>General Linux</summary>
+<summary>General Linux (wg-quick)</summary>
 The VPN can always be started with:
 
 Open VPN -> sudo wg-quick up wg0  
 Close VPN -> sudo wg-quick down wg0  
 Status -> sudo wg
 
-Automatic DNS configuration depends on the Linux distribution and the DNS manager in use.
+Automatic DNS configuration depends on the Linux distribution and the DNS manager in use.  
+
+If DNS is not configured automatically, follow your distribution's recommended integration or configure your DNS resolver manually.  
 </details>
 <details>
-<summary>Arch Linux</summary>
+<summary>Arch Linux / Fedora (NetworkManager)</summary>
 Do not install openresolv when using NetworkManager to manage WireGuard connections.  
 NetworkManager will manage DNS automatically.  
     
@@ -1025,6 +1027,7 @@ Close the VPN
 nmcli connection show wg0  
 >ipv4.dns: 10.8.0.1  
 </details>
+<details>
 
 
 ## Verify the VPN tunnel (Client / PC)  
