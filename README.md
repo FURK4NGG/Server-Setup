@@ -1021,12 +1021,12 @@ cat /etc/resolv.conf
 >Should see 10.8.0.1  
 
 Close the VPN  
+cat /etc/resolv.conf  
 >Should just see 192.168.1.1  
 
 nmcli connection show wg0  
 >ipv4.dns: 10.8.0.1  
 </details>
-<details>
 
 
 ## Verify the VPN tunnel (Client / PC)  
