@@ -479,6 +479,7 @@ Validate your DKIM and SPF DNS records. -> https://dmarcdkim.com/tools/check-dki
 Mail Tester -> https://www.mail-tester.com/  
 MX Records and Blacklist check -> https://mxtoolbox.com/SuperTool.aspx  
 SPF Test -> https://mxtoolbox.com/spf.aspx  
+What Is My Ip Adress -> https://ifconfig.me/  
 Domain Health Report -> https://mxtoolbox.com/emailhealth/  
 SEO TEST -> https://www.seobility.net/en/seocheck/  
 Web Page Quality -> https://pagespeed.web.dev/  
@@ -1130,6 +1131,7 @@ sudo nft -a list chain inet filter input
 >public DNS DROP  
 
 DNS Checker -> https://dnscheck.tools/  
+What Is My Ip Adress -> https://ifconfig.me/  
 
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
