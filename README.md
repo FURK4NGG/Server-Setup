@@ -1190,9 +1190,8 @@ localhost (127.0.0.1)
 
 
 ## AI-Assisted Server Setup  
-```text
 
-Use the prompt below with an AI assistant. Replace the placeholders with your own server, operating system, domain, hardware, network and application requirements.
+Use the prompt below with an AI assistant. Replace the placeholders with your own server, operating system, domain, hardware, network and application requirements.  
 
 ```text
 You are an experienced Linux system administrator, network engineer and self-hosting specialist.
