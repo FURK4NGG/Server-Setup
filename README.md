@@ -36,43 +36,60 @@ File Zilla(For upload your website documents to server)
 
 ## 📦 Setup
 
-ssh root@SUNUCU_IP  
+Connect to the server through SSH:  
+ssh root@SERVER_IP  
 
-apt update && apt full-upgrade -y  
-reboot  
-
-ssh root@SUNUCU_IP  
-
-apt install -y curl wget sudo gnupg2 ca-certificates  
-
-
-ya da 
-
-terminal:  
-vncviewer <vnc_ip>:<vnc_port>  
-enter the vnc password(max 8 character)  
-
-
-Enter your user:root and password:server password  
+Update the system:  
 apt update  
 apt full-upgrade -y  
 apt autoremove -y  
 reboot  
 
+Reconnect after the reboot:  
+ssh root@SERVER_IP  
 
+
+[Optional: Connect through VNC                    ]  
+vncviewer VNC_IP:VNC_PORT  
+enter the vnc password(max 8 character)  
+
+Enter the VNC password and log in as:  
+Username: root  
+Password: SERVER_PASSWORD  
+
+Useful terminal shortcuts:  
+Scroll up:  
+Shift + Page Up  
+
+Scroll down:  
+Shift + Page Down  
+
+Temporarily stop kernel messages from appearing in the current terminal session:  
+sudo dmesg -D  
+
+Re-enable them:  
+[sudo dmesg -E                                    ]  
+
+
+Install the required tools:  
+apt install -y curl wget sudo gnupg2 ca-certificates  
+
+Verify the system:  
 cat /etc/os-release  
 hostnamectl  
 hostname -I  
-ip a  
+ip address  
 timedatectl  
+ip route  
 
--test those-  
+>Debian 12  
+>Correct IPv4 address  
+>Correct global IPv6 address (inet6 2a01:c303:2456:2954::1/64 scope global, ipv6 is 2a01:c303:2456:2954::1)  
+>Correct hostname  
+>Correct date, time and timezone  
+>A valid default network route  
 
-Debian 12  
-IPv4  
-IPv6 (inet6 2a01:c303:2456:2954::1/64 scope global, ipv6 is 2a01:c303:2456:2954::1)  
-Saat doğru mu  
-Network doğru mu  
+
 
 
 # CLOUDFLARE DNS RECORDS  
@@ -430,7 +447,7 @@ Show the dedicated sender addresses used by applications (Nextcloud, Synapse, et
 sudo postmap -s /etc/postfix/app_senders_login_maps  
 
 ## IMAP SETTINGS
->Admin page -> https://mail.domain//app/?admin  
+>Admin page -> https://mail.domain/app/?admin  
 >username:admin  
 >password:/var/www/snappymail/app/data/_data_/_default_/admin_password.txt
 
