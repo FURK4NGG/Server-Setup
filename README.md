@@ -666,14 +666,17 @@ uuidgen
 ULA -> fdf8:1d4f:ae7d::/64  
 
 
-Server  
+VPS  
+[Interface]  
 Address = 10.8.0.1/24, fdf8:1d4f:ae7d::1/64  
+[Peer]  
+AllowedIPs = 10.8.0.3/32, fdf8:1d4f:ae7d::3/128  
 
-Phone  
-Address = 10.8.0.2/24, fdf8:1d4f:ae7d::2/64  
-
-Desktop  
+PC  
+[Interface]  
 Address = 10.8.0.3/24, fdf8:1d4f:ae7d::3/64  
+[Peer]  
+AllowedIPs = 0.0.0.0/0, ::/0  
 </details>
 
 <details>
