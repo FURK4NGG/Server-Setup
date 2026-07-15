@@ -677,6 +677,22 @@ PC
 Address = 10.8.0.3/24, fdf8:1d4f:ae7d::3/64  
 [Peer]  
 AllowedIPs = 0.0.0.0/0, ::/0  
+
+VPS  
+nmcli connection delete wg0  
+nmcli connection import type wireguard file /etc/wireguard/wg0.conf  
+nmcli connection up wg0  
+
+PC  
+nmcli connection show wg0  
+>ipv6.addresses: fdf8:1d4f:ae7d::3/64  
+
+ip addr show wg0  
+>inet6 fdf8:1d4f:ae7d::3/64 scope global noprefixroute  
+
+nmcli device show wg0  
+>IP6.ADDRESS[1]: fdf8:1d4f:ae7d::3/64  
+
 </details>
 
 <details>
