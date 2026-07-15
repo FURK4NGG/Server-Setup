@@ -1207,7 +1207,7 @@ localhost (127.0.0.1)
 
 
 
-## AI-Assisted Server Setup  
+# AI-Assisted Server Setup  
 
 Use the prompt below with an AI assistant. Replace the placeholders with your own server, operating system, domain, hardware, network and application requirements.  
 
