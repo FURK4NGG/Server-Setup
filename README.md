@@ -12,6 +12,7 @@ This repository helps you build a complete self-hosted environment on your own V
 
 BASE(Yunohost)  
 
+Ad Blocker(AdGuard Home)  
 Video-Voice Call(Element,Synapse)  
 Rss(FreshRSS)  
 Github Repo Clone(Gitea)  
@@ -88,6 +89,7 @@ CNAME www furk4ngg.me
 A * IPV4  
 AAAA * IPV6  
 
+A ads.domain IPV4  
 A chat.domain IPV4  
 A cloud.domain IPV4  
 A convert.domain IPV4  
@@ -103,6 +105,7 @@ A uptime.domain IPV4
 A usage.domain IPV4  
 A visitors.domain IPV4  
 
+AAAA ads.domain IPV6  
 AAAA chat.domain IPV6  
 AAAA cloud.domain IPV6  
 AAAA convert.domain IPV6  
@@ -129,6 +132,7 @@ curl https://install.yunohost.org | bash
 
 
 After completing the local YunoHost configuration, create the following domains from 'YunoHost>Domains' for the DNS records that we created:  
+AdGuard Home -> ads.domain  
 Element -> chat.domain and Synapse -> syn.domain  
 FressRSS -> rss.domain  
 Gitea -> git.domain  
@@ -150,6 +154,7 @@ Vert -> convert.domain
 # Yunohost App Permissions  
 *visitors(Ziyaretçiler)* *all_users(Tum yunohost kullanicilari)*
 
+AdGuard Home -> all_users  
 Element -> all_users  
 Synapse -> all_users  
 FreshRSS -> all_users  
@@ -230,18 +235,12 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 
 
-# -Lufi Settings-  
-Install Lufi with LDAP configuration? -> (Yes)  
 
-# -Uptime Kuma-  
-Choose SQLite database  
 
-# -Umami Settings-  
-visitors.domain -> all_users  
-visitors.domain/api -> visitors  
-visitors.domain/recorder -> visitors  
-visitors.domain/script -> visitors  
-
+# -AdGuard Home Settings-  
+ads.domain -> all_users  
+ads.domainre:ads.domain/control -> visitors  
+ads.domainre:ads.domain/dns-query -> visitors  
 
 # -Element Settings-  
 Enable fedration features by default -> (Yes)  
@@ -261,13 +260,24 @@ git.domain -> all_users,visitors
 admin -> admins  
 git.domain.megit.furk4ngg.me/v2 -> visitors  
 
-
 # -Lime Survey-  
 forms.domain/admin -> admin page  
-https://forms.domain/index.php/dashboard/view
+https://forms.domain/index.php/dashboard/view  
+
+# -Lufi Settings-  
+Install Lufi with LDAP configuration? -> (Yes)  
 
 # -NextCloud Settings-  
 Add the users' home directory in Nextcloud? -> (No)  
+
+# -Umami Settings-  
+visitors.domain -> all_users  
+visitors.domain/api -> visitors  
+visitors.domain/recorder -> visitors  
+visitors.domain/script -> visitors  
+
+# -Uptime Kuma-  
+Choose SQLite database  
 
 # 📦 OnlyOffice Setup  
 Verify that the server settings were successfully updated  
@@ -937,14 +947,20 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 
 sudo systemctl restart adguardhome  
 
+## Verify that AdGuard is listening (VPS)  
+
 sudo ss -lunpt | grep ':53'  
 >SERVER_PUBLIC_IP:53  
 >10.8.0.1:53
 >127.0.0.1:53 (dnsmasq)  
 
-Test(PC)>ping 10.8.0.1  
+Test(PC)>  
+Open The VPN  
+ping 10.8.0.1  
+>0% packet loss  
 
 dig google.com  
+>status: NOERROR  
 >SERVER: 10.8.0.1#53  
 
 
@@ -1172,3 +1188,160 @@ localhost (127.0.0.1)
      Postfix  
 
 
+
+## AI-Assisted Server Setup  
+```text
+
+Use the prompt below with an AI assistant. Replace the placeholders with your own server, operating system, domain, hardware, network and application requirements.
+
+```text
+You are an experienced Linux system administrator, network engineer and self-hosting specialist.
+
+I want you to create a current, secure and machine-specific installation guide for my server. Use the README instructions provided below as a reference for my intended architecture, applications and preferences, but do not blindly copy outdated commands or configurations.
+
+My system:
+
+- Server type: [VPS / home server / mini PC / Raspberry Pi / other]
+- Provider or hardware model: [PROVIDER_OR_MODEL]
+- Operating system and version: [OPERATING_SYSTEM]
+- CPU architecture: [amd64 / arm64 / other]
+- RAM: [RAM]
+- Storage: [STORAGE]
+- Public IPv4: [YES / NO]
+- Public IPv6: [YES / NO]
+- Private IP or local network: [PRIVATE_NETWORK_OR_NONE]
+- Domain: [DOMAIN]
+- DNS provider: [DNS_PROVIDER]
+- Reverse proxy or server platform: [YunoHost / Docker / Podman / native packages / other]
+- Firewall system: [YunoHost firewall / nftables / firewalld / UFW / other]
+- VPN clients: [Linux / Windows / Android / iOS / macOS]
+- Linux network manager: [NetworkManager / systemd-networkd / other]
+- Linux DNS manager: [NetworkManager / systemd-resolved / openresolv / other / unknown]
+
+Applications I want to install:
+
+[LIST_THE_APPLICATIONS]
+
+Examples:
+
+- YunoHost
+- WireGuard
+- AdGuard Home
+- Nextcloud
+- ONLYOFFICE
+- Gitea
+- Element and Synapse
+- FreshRSS
+- Glances
+- LimeSurvey
+- Lufi
+- PairDrop
+- Umami
+- Uptime Kuma
+- SnappyMail
+- Vert
+- A mail server
+- A custom web application
+
+Requirements:
+
+1. Check current official documentation and current package names before providing commands.
+2. Adapt every command to my exact operating system, release, network manager, DNS manager, firewall and CPU architecture.
+3. Do not use deprecated packages, obsolete configuration paths or hard-coded software versions unless they are required by the installed platform.
+4. Clearly label every command with where it must be run:
+   - VPS / server
+   - Client / PC
+   - Phone
+   - DNS provider dashboard
+   - YunoHost web administration
+5. Present the installation in the correct execution order.
+6. Explain briefly what each major step does and what problem it prevents.
+7. Before changing a configuration file:
+   - show how to create a backup;
+   - state the exact file path;
+   - show only the section that must be added or changed.
+8. Never expose or request private keys, passwords, API tokens, JWT secrets or full credentials in the response.
+9. Use placeholders such as:
+   - SERVER_PUBLIC_IP
+   - SERVER_IPV6
+   - DOMAIN
+   - VPN_SERVER_PRIVATE_KEY
+   - VPN_SERVER_PUBLIC_KEY
+   - CLIENT_PRIVATE_KEY
+   - CLIENT_PUBLIC_KEY
+10. Verify the real outbound interface instead of assuming that it is eth0.
+11. Avoid manual PreUp and PostDown endpoint routes unless they are genuinely required. Explain why they are needed before adding them.
+12. Prevent NetworkManager, systemd-resolved and openresolv from simultaneously managing the same resolv.conf file.
+13. For NetworkManager clients, prefer NetworkManager-native WireGuard and DNS management.
+14. For wg-quick clients, explain which DNS manager is required and how DNS is restored when the VPN is disconnected.
+15. Keep the server’s local DNS resolution working for mail services, package management and system applications.
+16. Do not create a DNS loop between dnsmasq and AdGuard Home.
+17. If AdGuard Home must bind to a public IP because the VPS has no private IP:
+   - allow DNS only from localhost and the WireGuard network;
+   - block public TCP and UDP port 53;
+   - verify that the server is not an open resolver.
+18. Preserve YunoHost, Fail2Ban, mail, NAT and WireGuard firewall rules.
+19. Do not delete or replace the entire nftables ruleset without first analysing which service manages each table.
+20. Make firewall changes persistent using the method supported by the installed platform.
+21. For mail:
+   - verify Postfix, Dovecot, Rspamd and OpenDKIM;
+   - verify local DNS and MX resolution;
+   - verify STARTTLS;
+   - verify SMTP authentication;
+   - verify DKIM, SPF, DMARC, MX and PTR;
+   - verify that queued messages reach status=sent.
+22. For Nextcloud and ONLYOFFICE:
+   - verify healthcheck;
+   - verify api.js;
+   - verify SSL;
+   - verify matching JWT secrets;
+   - use the application-specific YunoHost shell or correct application user for occ commands;
+   - use the currently installed PHP version rather than hard-coding PHP 8.2.
+23. Include recovery and rollback commands for risky changes.
+24. Include tests after each section.
+25. For every test, provide:
+   - where to run it;
+   - whether the VPN must be enabled;
+   - the expected output;
+   - what the result means;
+   - what to check if the result is different.
+26. At the end, include a complete final validation checklist.
+27. Clearly identify any step that may be overwritten by a YunoHost upgrade, application upgrade, firewall reload or reboot.
+28. Do not claim that a configuration is persistent until it has been tested after a reboot.
+29. Do not assume that an application permission should be public. Explain the security impact of visitor and all-user access before recommending it.
+30. Prefer the safest configuration that still satisfies my requirements.
+
+Important:
+
+- Treat the README below as an architecture reference, not as an unquestionable source.
+- Correct any unsafe, duplicated, outdated or technically incorrect instruction you find.
+- If the README conflicts with current official documentation, use the current official method and explicitly state what changed.
+- Do not skip a required step merely because it is absent from the README.
+- Do not add unrelated software.
+- Do not ask unnecessary questions when the system information above is sufficient.
+- When essential information is missing, list the missing values first and then provide the parts of the guide that can already be completed safely.
+
+Output format:
+
+1. Architecture summary
+2. Assumptions and detected risks
+3. Preparation
+4. DNS and domain configuration
+5. Base platform installation
+6. Application installation order
+7. WireGuard setup
+8. AdGuard Home setup
+9. Client-specific VPN and DNS configuration
+10. Mail configuration
+11. Nextcloud and ONLYOFFICE integration
+12. Firewall and persistence
+13. Security hardening
+14. Tests and expected results
+15. Reboot validation
+16. Rollback instructions
+17. Final checklist
+
+Here is the existing README reference:
+
+[PASTE_THE_FULL_README_HERE]
+...
