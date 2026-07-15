@@ -49,7 +49,7 @@ Reconnect after the reboot:
 ssh root@SERVER_IP  
 
 
-* Optional: Connect through VNC * {  
+*Optional: Connect through VNC* {  
 vncviewer VNC_IP:VNC_PORT  
 enter the vnc password(max 8 character)  
 
