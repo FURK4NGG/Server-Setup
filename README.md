@@ -1,6 +1,6 @@
 # 👀 Server-Setup Overview
 
-This repository helps you build a complete self-hosted environment on your own VPS or home server. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, vpn server and many other applications—all under your own control.  
+This repository helps you build a complete self-hosted environment on your own VPS or home server. Replace your dependence on third-party cloud services such as Gmail, Google Drive, Dropbox, and similar platforms by hosting your own secure alternatives under your control. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, VPN server, and many other applications—all on infrastructure that you own and control.  
 
 
 ![Server-Setup Demo Image]()
@@ -49,7 +49,7 @@ Reconnect after the reboot:
 ssh root@SERVER_IP  
 
 
-\[                                                                     \]  
+{  
 Optional: Connect through VNC  
 vncviewer VNC_IP:VNC_PORT  
 enter the vnc password(max 8 character)  
@@ -70,7 +70,7 @@ sudo dmesg -D
 
 Re-enable them:  
 sudo dmesg -E  
-[                                                                  ]  
+}  
 
 
 Install the required tools:  
