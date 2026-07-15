@@ -1155,20 +1155,20 @@ Client
    │  
 WireGuard  
    │  
-10.8.0.1
+10.8.0.1  
    │  
-AdGuard Home
+AdGuard Home  
    │  
-Upstream DNS
+Upstream DNS  
    │  
-Internet
+Internet  
 
-localhost (127.0.0.1)
+localhost (127.0.0.1)  
         │  
-     dnsmasq
+     dnsmasq  
         │  
-   AdGuard Home
+   AdGuard Home  
         │  
-     Postfix
+     Postfix  
 
 
