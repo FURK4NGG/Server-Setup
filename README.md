@@ -749,7 +749,7 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j A
 >ip6tables nat ... → IPv6 NAT66  
 
 
-Ardından şu anda elle eklediğimiz NAT66 kuralını önce silmek gerekir; aksi hâlde WireGuard başlatıldığında aynı kural iki kez oluşur:  
+Remove the manually added NAT66 rule first. Otherwise, WireGuard will create the same rule again when it starts, resulting in duplicate NAT66 rules:  
 ```
 sudo ip6tables -t nat -D POSTROUTING \
 -s fdf8:1d4f:ae7d::/64 -o eth0 -j MASQUERADE
@@ -768,7 +768,7 @@ curl -6 ifconfig.me
 dig AAAA google.com
 ```
 >ping: 0% packet loss  
->curl: VPS'nin global IPv6 adresi  
+>curl: VPS's Global IPV6 address  
 >dig: status: NOERROR  
 
 
