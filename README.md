@@ -879,6 +879,7 @@ Restart AdGuard Home
 sudo systemctl restart adguardhome
 ```
 
+Status  
 ```
 sudo chown adguardhome:adguardhome /var/www/adguardhome/AdGuardHome.yaml
 sudo systemctl start adguardhome
