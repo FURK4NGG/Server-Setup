@@ -49,7 +49,8 @@ Reconnect after the reboot:
 ssh root@SERVER_IP  
 
 
-[Optional: Connect through VNC                    ]  
+[                                                                     ]  
+Optional: Connect through VNC  
 vncviewer VNC_IP:VNC_PORT  
 enter the vnc password(max 8 character)  
 
@@ -68,7 +69,8 @@ Temporarily stop kernel messages from appearing in the current terminal session:
 sudo dmesg -D  
 
 Re-enable them:  
-[sudo dmesg -E                                    ]  
+sudo dmesg -E  
+[                                                                  ]  
 
 
 Install the required tools:  
