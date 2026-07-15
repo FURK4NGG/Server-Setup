@@ -938,8 +938,9 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 sudo systemctl restart adguardhome  
 
 sudo ss -lunpt | grep ':53'  
->SERVER_PUBLIC_IP:53
+>SERVER_PUBLIC_IP:53  
 >10.8.0.1:53
+>127.0.0.1:53 (dnsmasq)  
 
 Test(PC)>ping 10.8.0.1  
 
@@ -947,7 +948,7 @@ dig google.com
 >SERVER: 10.8.0.1#53  
 
 
-## Restrict DNS access to WireGuard clients  
+## Restrict DNS access to WireGuard clients only  
 sudo nft -a list chain inet filter input  
 Expected result:
 
@@ -1087,6 +1088,8 @@ dig @10.8.0.1 MX srv1.mail-tester.com
 dig @127.0.0.1 MX srv1.mail-tester.com  
 >... timed out  
 
+
+Forward all local DNS requests to AdGuard Home:  
 sudo nano /etc/dnsmasq.d/99-adguard-upstream.conf  
 ```
 no-resolv  
@@ -1145,3 +1148,27 @@ What Is My Ip Adress -> https://ifconfig.me/
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
 Login Page -> https://ads.domain/login.html  
+
+# DIAGRAM
+
+Client  
+   │
+WireGuard  
+   │
+10.8.0.1
+   │
+AdGuard Home
+   │
+Upstream DNS
+   │
+Internet
+
+localhost (127.0.0.1)
+        │
+     dnsmasq
+        │
+   AdGuard Home
+        │
+     Postfix
+
+
