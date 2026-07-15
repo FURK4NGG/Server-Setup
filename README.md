@@ -640,8 +640,8 @@ sudo yunohost firewall reload
 sudo ss -lun | grep 51820  
 >*:51820  
 
-
-(Optional) Enable IPv6 support (VPS)  
+<details>
+<summary>(Optional) Enable IPv6 support (VPS)</summary>  
 Verify that the server has working IPv6 connectivity  
 ip -6 addr show  
 >A global IPv6 address (inet6 2a01:c303:2456:2954::1/64 scope global, ipv6 is 2a01:c303:2456:2954::1)  
@@ -674,7 +674,7 @@ Address = 10.8.0.2/24, fdf8:1d4f:ae7d::2/64
 
 Desktop  
 Address = 10.8.0.3/24, fdf8:1d4f:ae7d::3/64  
-
+</details>
 
 <details>
 <summary>Create Client Key</summary>
