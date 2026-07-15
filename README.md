@@ -672,7 +672,7 @@ Address = 10.8.0.1/24, fdf8:1d4f:ae7d::1/64
 [Peer]  
 AllowedIPs = 10.8.0.3/32, fdf8:1d4f:ae7d::3/128  
 
-PC  
+PC (desktop -> wg0.conf)  
 [Interface]  
 Address = 10.8.0.3/24, fdf8:1d4f:ae7d::3/64  
 [Peer]  
