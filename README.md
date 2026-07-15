@@ -1152,23 +1152,23 @@ Login Page -> https://ads.domain/login.html
 # DIAGRAM
 
 Client  
-   │
+   │  
 WireGuard  
-   │
+   │  
 10.8.0.1
-   │
+   │  
 AdGuard Home
-   │
+   │  
 Upstream DNS
-   │
+   │  
 Internet
 
 localhost (127.0.0.1)
-        │
+        │  
      dnsmasq
-        │
+        │  
    AdGuard Home
-        │
+        │  
      Postfix
 
 
