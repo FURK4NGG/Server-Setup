@@ -863,12 +863,6 @@ htpasswd -B -C 10 -n -b USERNAME 'NEW_PASSWORD'
 sudo systemctl stop adguardhome  
 ```
 
-(VPS)  
-Restart AdGuard Home  
-```
-sudo systemctl restart adguardhome
-```
-
 sudo cp /var/www/adguardhome/AdGuardHome.yaml \  
 /var/www/adguardhome/AdGuardHome.yaml.bak  
 
@@ -879,6 +873,11 @@ Replace only the password: value in the following section:
 >name: USERNAME  
 >password: $2y$10$...  
 
+(VPS)  
+Restart AdGuard Home  
+```
+sudo systemctl restart adguardhome
+```
 
 ```
 sudo chown adguardhome:adguardhome /var/www/adguardhome/AdGuardHome.yaml
