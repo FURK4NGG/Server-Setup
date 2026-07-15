@@ -654,12 +654,12 @@ ping -6 google.com
 
 If IPv6 is working, you can assign a Unique Local IPv6 (ULA) prefix to the WireGuard network  
 Generate a ULA prefix:  
-- 1)  
+1)
 openssl rand -hex 5  
 >a1b2c3d4e5  
 ULA -> fda1:b2c3:d4e5::/64  
 
-- 2)  
+2)
 uuidgen  
 >f81d4fae-7dec-11d0-a765-00a0c91e6bf6  
 >First 10 character -> f81d4fae7d  
