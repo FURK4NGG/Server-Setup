@@ -1037,6 +1037,11 @@ ping 10.8.0.1
 ```
 >0% packet loss  
 
+```
+sudo wg  
+```
+>latest handshake:  
+
 ## Verify Internet Routing (Client / PC)  
 curl -4 ifconfig.me  
 When the VPN is enabled, the output should be the public IPv4 address of the VPS.  
@@ -1058,7 +1063,7 @@ dig google.com
 ## Verify the AdGuard Home Dashboard  
 Open the AdGuard Home dashboard and go to: Query Log  
 
-Refresh a few websites on the client device.  
+Refresh a few websites or run: dig google.com  
 
 Expected result:  
 New DNS queries from the WireGuard client should appear in the Query Log.  
@@ -1070,6 +1075,7 @@ sudo wg
 
 ## Verify that public DNS is blocked (Client / PC outside the VPN)  
 dig @SERVER_PUBLIC_IP google.com  
+dig @SERVER_PUBLIC_IP google.com +tcp  
 >no servers could be reached  
 >or  
 >connection timed out  
@@ -1102,8 +1108,10 @@ dig MX srv1.mail-tester.com
 sudo postqueue -f  
 sudo tail -f /var/log/mail.log  
 ```
->status=sent  
+>status=sent
 
+mailq  
+>Mail queue is empty  
 
 sudo systemctl status dnsmasq  
 >active (running)  
@@ -1115,6 +1123,7 @@ Save the current rules:
 sudo nft list ruleset | sudo tee /etc/nftables.conf >/dev/null  
 
 sudo cat /etc/nftables.conf  
+sudo nft list ruleset  
 
 Check the service is enabled:  
 sudo systemctl enable nftables  
