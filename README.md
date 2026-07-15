@@ -691,7 +691,86 @@ ip addr show wg0
 >inet6 fdf8:1d4f:ae7d::3/64 scope global noprefixroute  
 
 nmcli device show wg0  
->IP6.ADDRESS[1]: fdf8:1d4f:ae7d::3/64  
+>IP6.ADDRESS[1 or 2]: fdf8:1d4f:ae7d::3/64  
+
+Test>  
+VPS  
+ping -6 fdf8:1d4f:ae7d::3  
+>0% packet loss  
+
+PC  
+ping -6 fdf8:1d4f:ae7d::1  
+>0% packet loss  
+
+
+NAT66 (VPS)  
+sysctl net.ipv6.conf.all.forwarding  
+>net.ipv6.conf.all.forwarding = 1  
+
+```
+ip route | grep default  
+ip -6 route | grep default  
+```
+>If both IPv4 and IPv6 use eth0 as the outbound interface, use eth0 for NAT66 as well  
+
+
+Add NAT66 Rule (VPS):  
+sudo ip6tables -t nat -A POSTROUTING -s fdf8:1d4f:ae7d::/64 -o eth0 -j MASQUERADE  
+
+Test>  
+sudo ip6tables -t nat -L -v  
+>Chain POSTROUTING  
+>MASQUERADE  all  fdf8:1d4f:ae7d::/64 anywhere  
+
+PC  
+Open the VPN  
+curl -6 ifconfig.me  
+>IPV6  
+ping -6 google.com  
+>0% packet loss  
+
+Verify IPv6 DNS (✅ The client can send IPv6 (AAAA) DNS queries through the VPN using AdGuard Home)  
+dig AAAA google.com  
+> status: NOERROR  
+> google.com.    IN AAAA 2a00:1450:4001:...  
+
+## Change wg0.conf (VPS)  
+export TERM=xterm-256color  
+nano /etc/wireguard/wg0.conf  
+```
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -A FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -s fdf8:1d4f:ae7d::/64 -o eth0 -j MASQUERADE  
+
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -D FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -s fdf8:1d4f:ae7d::/64 -o eth0 -j MASQUERADE  
+```
+>iptables ...      → IPv4 forwarding  
+>iptables nat ...  → IPv4 NAT  
+
+>ip6tables ...     → IPv6 forwarding  
+>ip6tables nat ... → IPv6 NAT66  
+
+
+Ardından şu anda elle eklediğimiz NAT66 kuralını önce silmek gerekir; aksi hâlde WireGuard başlatıldığında aynı kural iki kez oluşur:  
+```
+sudo ip6tables -t nat -D POSTROUTING \
+-s fdf8:1d4f:ae7d::/64 -o eth0 -j MASQUERADE
+```
+sudo systemctl restart wg-quick@wg0  
+
+Test>  
+VPS  
+sudo ip6tables -t nat -L POSTROUTING -n -v  
+>MASQUERADE  all  fdf8:1d4f:ae7d::/64  ::/0  
+
+PC  
+```
+ping -6 google.com
+curl -6 ifconfig.me
+dig AAAA google.com
+```
+>ping: 0% packet loss  
+>curl: VPS'nin global IPv6 adresi  
+>dig: status: NOERROR  
+
 
 </details>
 
