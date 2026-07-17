@@ -570,6 +570,14 @@ mail._domainkey IN TXT (
 "v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."
 )
 ```
+>Tek satır olacak.  
+>Yapıştırmaman gerekenler  
+>❌ (  
+>❌ )  
+>❌ ""  
+>şeklindeki çoklu tırnaklar.  
+
+
 >Cloudflare'daki mevcut mail._domainkey TXT kaydının yalnızca değerini bu yeni p= anahtarıyla değiştir  
 
 OpenDKIM'i yeniden yükle  
