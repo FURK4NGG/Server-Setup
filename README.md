@@ -565,11 +565,13 @@ sudo chmod 600 /etc/dkim/domain.mail.key
 
 Update the DNS record  
 cat mail.txt  
-```
-mail._domainkey IN TXT (
-"v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."
-)
-```
+
+>mail._domainkey IN TXT (  
+>"v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."  
+>)  
+
+>Replace only the value of the existing mail._domainkey TXT record in Cloudflare with the new p= key  
+
 >The value must be on a single line.  
 >Do not include the following:  
 >❌ (  
@@ -577,8 +579,6 @@ mail._domainkey IN TXT (
 >❌ ""  
 >Multiple quoted strings like this.  
 
-
->Replace only the value of the existing mail._domainkey TXT record in Cloudflare with the new p= key  
 
 Restart OpenDKIM  
 ```
@@ -595,9 +595,9 @@ sudo opendkim-testkey \
 
 Test>  
 https://www.mail-tester.com/  
->Kimliğiniz doğrulandı  
->DKIM imzanız doğrulandı  
->Anahtar uzunluğu: 2048 bit  
+>Identity verified  
+>DKIM signature verified  
+>Key length: 2048-bit  
 
 
 
