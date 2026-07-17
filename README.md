@@ -537,8 +537,53 @@ This is a common and valid mail server configuration. Using mail.example.com for
 If Mail Tester reports SPF, DKIM, DMARC, and Reverse DNS as valid, you can safely continue with the DKIM 2048-bit upgrade.  
 
 
+Eski anahtari yedekle  
+```
+sudo cp -a /etc/dkim/domain.mail.key \
+/etc/dkim/domain.mail.key.bak
+```
+
+Yeni 2048 bit anahtarı üret  
+```
+sudo opendkim-genkey \
+-b 2048 \
+-r \
+-s mail \
+-d domain
+```
+ls  
+>mail.private  
+>mail.txt  
 
 
+Private key'i yerine koy  
+```
+sudo mv mail.private /etc/dkim/domain.mail.key  
+sudo chown opendkim:root /etc/dkim/domain.mail.key  
+sudo chmod 600 /etc/dkim/domain.mail.key  
+```
+
+DNS kaydini guncelle  
+cat mail.txt  
+```
+mail._domainkey IN TXT (
+"v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."
+)
+```
+>Cloudflare'daki mevcut mail._domainkey TXT kaydının yalnızca değerini bu yeni p= anahtarıyla değiştir  
+
+OpenDKIM'i yeniden yükle  
+```
+sudo systemctl restart opendkim
+```
+
+Anahtari dogrula  
+```
+sudo opendkim-testkey \
+-d domain \
+-s mail \
+-v
+```
 
 
 /baska maillerden yonlendirme hesabi/
