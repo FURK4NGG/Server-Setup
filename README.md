@@ -493,9 +493,53 @@ Allow self signed: OFF
 
 
 DKIM 1024 bit uyarısı  
+
 sudo opendkim-testkey -d domain -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
 2048 bit starts with MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...  
+
+openssl pkey -in /etc/dkim/domain.mail.key -text -noout | grep "Private-Key"  
+>Private-Key: (1024 bit, 2 primes)  
+
+## Verify your mail configuration  
+Before upgrading your DKIM key, verify the following settings  
+
+System Hostname  
+hostnamectl --static  
+>domain  
+
+Postfix Hostname  
+postconf myhostname  
+>myhostname = mail.example.com  
+
+MX record  
+dig @1.1.1.1 MX example.com +short  
+>10 mail.domain.  
+
+A record  
+dig @1.1.1.1 mail.domain A +short  
+>VPS's IPV4 Address  
+
+AAAA record  
+dig @1.1.1.1 mail.domain AAAA +short  
+>VPS's IPV6 Address  
+
+
+>hostnamectl --static returns example.com  
+>postconf myhostname returns mail.example.com  
+>your PTR record points to mail.example.com  
+>your MX record points to mail.example.com  
+
+and YunoHost Diagnosis still reports a hostname/EHLO warning, don't panic.  
+
+This is a common and valid mail server configuration. Using mail.example.com for SMTP while keeping the system hostname as the root domain (example.com) does not, by itself, cause mail delivery problems.  
+
+If Mail Tester reports SPF, DKIM, DMARC, and Reverse DNS as valid, you can safely continue with the DKIM 2048-bit upgrade.  
+
+
+
+
+
 
 /baska maillerden yonlendirme hesabi/
 
@@ -596,11 +640,15 @@ It should look similar to this:
 >server_public.key  
 >wg0.conf  
 
+This test for next step 'Create wg0.conf'  
+ip route | grep default  
+if (default via ... dev eth0):  
+>PostUp = ... -o eth0 ...  
+>PostDown = ... -o eth0 ...  
 
-ip route | grep default
-If resoult has eth:
-
-elif(ens18):
+elif (default via ... dev ens18):  
+>PostUp = ... -o ens18 ...  
+>PostDown = ... -o ens18 ...  
 
 
 
