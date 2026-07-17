@@ -492,7 +492,7 @@ Require verification: ON
 Allow self signed: OFF  
 
 
-## DKIM 1024-bit warning (Upgrade the key to 2048-bit)  
+## DKIM 1024-bit warning (Upgrade the key to 2048-bit, as preferred by major email providers)  
 
 sudo opendkim-testkey -d domain -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
