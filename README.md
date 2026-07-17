@@ -492,7 +492,7 @@ Require verification: ON
 Allow self signed: OFF  
 
 
-DKIM 1024 bit uyarısı  
+## DKIM 1024-bit warning (Upgrade the key to 2048-bit)  
 
 sudo opendkim-testkey -d domain -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
@@ -501,7 +501,7 @@ sudo opendkim-testkey -d domain -s mail -vvv
 openssl pkey -in /etc/dkim/domain.mail.key -text -noout | grep "Private-Key"  
 >Private-Key: (1024 bit, 2 primes)  
 
-## Verify your mail configuration  
+- Verify your mail configuration  
 Before upgrading your DKIM key, verify the following settings  
 
 System Hostname  
@@ -537,13 +537,13 @@ This is a common and valid mail server configuration. Using mail.example.com for
 If Mail Tester reports SPF, DKIM, DMARC, and Reverse DNS as valid, you can safely continue with the DKIM 2048-bit upgrade.  
 
 
-Eski anahtari yedekle  
+Back up the existing key  
 ```
 sudo cp -a /etc/dkim/domain.mail.key \
 /etc/dkim/domain.mail.key.bak
 ```
 
-Yeni 2048 bit anahtarı üret  
+Generate a new 2048-bit key  
 ```
 sudo opendkim-genkey \
 -b 2048 \
@@ -556,42 +556,49 @@ ls
 >mail.txt  
 
 
-Private key'i yerine koy  
+Replace the private key  
 ```
 sudo mv mail.private /etc/dkim/domain.mail.key  
 sudo chown opendkim:root /etc/dkim/domain.mail.key  
 sudo chmod 600 /etc/dkim/domain.mail.key  
 ```
 
-DNS kaydini guncelle  
+Update the DNS record  
 cat mail.txt  
 ```
 mail._domainkey IN TXT (
 "v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."
 )
 ```
->Tek satır olacak.  
->Yapıştırmaman gerekenler  
+>The value must be on a single line.  
+>Do not include the following:  
 >❌ (  
 >❌ )  
 >❌ ""  
->şeklindeki çoklu tırnaklar.  
+>Multiple quoted strings like this.  
 
 
->Cloudflare'daki mevcut mail._domainkey TXT kaydının yalnızca değerini bu yeni p= anahtarıyla değiştir  
+>Replace only the value of the existing mail._domainkey TXT record in Cloudflare with the new p= key  
 
-OpenDKIM'i yeniden yükle  
+Restart OpenDKIM  
 ```
 sudo systemctl restart opendkim
 ```
 
-Anahtari dogrula  
+Verify the key  
 ```
 sudo opendkim-testkey \
 -d domain \
 -s mail \
 -v
 ```
+
+Test>  
+https://www.mail-tester.com/  
+>Kimliğiniz doğrulandı  
+>DKIM imzanız doğrulandı  
+>Anahtar uzunluğu: 2048 bit  
+
 
 
 /baska maillerden yonlendirme hesabi/
