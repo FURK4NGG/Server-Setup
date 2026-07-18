@@ -622,10 +622,6 @@ Create a new account named dmarc@domain in YunoHost.
 TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
 
-## Add a mail Alias  
-If you don't want to share your primary email address, you can create aliases for different services.  
-Yunohost>Users>user>edit user's account>'brand@domain' add a mail alias then messages sent to brand@domain address are delivered to: user@domain  
-
 
 In your Server Hosting change (Reverse DNS Management>PTR Records(IPV4 to mail.domain / IPV6 to mail.domain))  
 
@@ -653,6 +649,9 @@ Emails appear under YunoHost → Users
 You can connect and use your mail with these mail providers:Thunderbird,Gmail,Outlook,Proton Mail or with your Webmail Client(Snappy Mail)  
 
 
+## Add a mail Alias  
+If you don't want to share your primary email address, you can create aliases for different services.  
+Yunohost>Users>user>edit user's account>'brand@domain' add a mail alias then messages sent to brand@domain address are delivered to: user@domain  
 
 # 📦 Wireguard VPN Setup
 ❌ In my opinion, this is not anonymity, since all tunnel traffic exits through a single VPS IP address  
