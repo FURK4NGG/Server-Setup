@@ -372,7 +372,7 @@ CTRL + F5
 MX domain    mail.domain (Priority 10)  
 TXT domain    "v=spf1 a mx -all"  
 TXT _dmarc    "v=DMARC1; p=none"  
-TXT mail._domainkey    "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in diagnosis screen'"  
+TXT mail._domainkey    "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in Yunohost>Diagnosis>DNS records screen'"  
 CAA domain    issue "letsencrypt.org"  
 PTR domain    mail.domain  
 
