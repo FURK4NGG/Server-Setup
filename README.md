@@ -284,6 +284,9 @@ Github Dashboard>Settings(right top in Profile popup)>Developer Settings(at the 
 then  
 
 Go to the git.domain and click '+' icon  
+
+Access Code: Github Personal access token  
+
 New Repository(Yeni Depo) -> Create new repo from scratch  
 New Migration(Yeni Göç) -> Used to move or copy an existing project  
 
