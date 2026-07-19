@@ -304,7 +304,7 @@ Migration Items(Göç Öğeleri):
 - [x] Releases(Sürümler)
 - [x] Milestones(Dönüm noktaları)
 
-Migrate Repository(Depoyu Göç Ettir)  
+Click Migrate Repository(Depoyu Göç Ettir)  
 
 
 # -Lime Survey-  
