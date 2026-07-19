@@ -599,7 +599,7 @@ cat mail.txt
 >"v=DKIM1; k=rsa; p=MIIBIjANBgkqh..."  
 >)  
 
->Replace only the value of the existing mail._domainkey TXT record in Cloudflare with the new p= key(MIIBIjANBgkqh...)  
+>Replace only the value of the existing mail._domainkey TXT record in Cloudflare with the new p= MIIBIjANBgkqh...  
 
 >The value must be on a single line.  
 >Do not include the following:  
