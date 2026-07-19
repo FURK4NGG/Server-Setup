@@ -291,7 +291,7 @@ New Repository(Yeni Depo) -> Create new repo from scratch
 New Migration(Yeni Göç) -> Used to move or copy an existing project  
 
 Migrate from GitHub:  
-Migration Options [ ] This repository will be a mirror  
+Migration Options - [ ] This repository will be a mirror  
 >If enabled, you won't be able to make changes directly in your Gitea repository. Any changes made to the GitHub repository will be automatically synchronized to the Gitea repository.  
 
 
