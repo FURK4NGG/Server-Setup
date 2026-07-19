@@ -278,6 +278,10 @@ git.domain -> all_users,visitors
 admin -> admins  
 git.domain.megit.furk4ngg.me/v2 -> visitors  
 
+Get 'Personal access tokens' from Github for clone your repos  
+Github Dashboard>Settings(right top in Profile popup)>Developer Settings(at the bottom)>Personal access tokens>Tokens (classic)>Generate new token (classic)'for general use'>Choose read:org, read:user, repo  and click 'Generate token'  
+
+
 # -Lime Survey-  
 forms.domain/admin -> admin page  
 https://forms.domain/index.php/dashboard/view  
