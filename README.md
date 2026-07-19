@@ -561,7 +561,7 @@ dig @1.1.1.1 mail.DOMAIN AAAA +short
 
 and YunoHost Diagnosis still reports a hostname/EHLO warning, don't panic.  
 
-This is a common and valid mail server configuration. Using mail.example.com for SMTP while keeping the system hostname as the root DOMAIN (example.com) does not, by itself, cause mail delivery problems.  
+This is a common and valid mail server configuration. Using mail.example.com for SMTP while keeping the system hostname as the root domain (example.com) does not, by itself, cause mail delivery problems.  
 
 If Mail Tester reports SPF, DKIM, DMARC, and Reverse DNS as valid, you can safely continue with the DKIM 2048-bit upgrade.  
 
