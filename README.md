@@ -101,48 +101,48 @@ Agent:Allow
 Training:Block  
 Import DNS Records:Manual only  
 *All Records should be DNS only*  
-A domain IPV4  
-AAAA domain IPV6  
-CNAME www furk4ngg.me  
+A DOMAIN IPV4  
+AAAA DOMAIN IPV6  
+CNAME www DOMAIN  
 A * IPV4  
 AAAA * IPV6  
 
-A ads.domain IPV4  
-A chat.domain IPV4  
-A cloud.domain IPV4  
-A convert.domain IPV4  
-A docs.domain IPV4  
-A forms.domain IPV4  
-A git.domain IPV4  
-A lufi.domain IPV4  
-A mail.domain IPV4  
-A pair.domain IPV4  
-A rss.domain IPV4  
-A syn.domain IPV4  
-A uptime.domain IPV4  
-A usage.domain IPV4  
-A visitors.domain IPV4  
+A ads.DOMAIN IPV4  
+A chat.DOMAIN IPV4  
+A cloud.DOMAIN IPV4  
+A convert.DOMAIN IPV4  
+A docs.DOMAIN IPV4  
+A forms.DOMAIN IPV4  
+A git.DOMAIN IPV4  
+A lufi.DOMAIN IPV4  
+A mail.DOMAIN IPV4  
+A pair.DOMAIN IPV4  
+A rss.DOMAIN IPV4  
+A syn.DOMAIN IPV4  
+A uptime.DOMAIN IPV4  
+A usage.DOMAIN IPV4  
+A visitors.DOMAIN IPV4  
 
-AAAA ads.domain IPV6  
-AAAA chat.domain IPV6  
-AAAA cloud.domain IPV6  
-AAAA convert.domain IPV6  
-AAAA docs.domain IPV6  
-AAAA forms.domain IPV6  
-AAAA git.domain IPV6  
-AAAA lufi.domain IPV6  
-AAAA mail.domain IPV6  
-AAAA pair.domain IPV6  
-AAAA rss.domain IPV6  
-AAAA syn.domain IPV6  
-AAAA uptime.domain IPV6  
-AAAA usage.domain IPV6  
-AAAA visitors.domain IPV6  
+AAAA ads.DOMAIN IPV6  
+AAAA chat.DOMAIN IPV6  
+AAAA cloud.DOMAIN IPV6  
+AAAA convert.DOMAIN IPV6  
+AAAA docs.DOMAIN IPV6  
+AAAA forms.DOMAIN IPV6  
+AAAA git.DOMAIN IPV6  
+AAAA lufi.DOMAIN IPV6  
+AAAA mail.DOMAIN IPV6  
+AAAA pair.DOMAIN IPV6  
+AAAA rss.DOMAIN IPV6  
+AAAA syn.DOMAIN IPV6  
+AAAA uptime.DOMAIN IPV6  
+AAAA usage.DOMAIN IPV6  
+AAAA visitors.DOMAIN IPV6  
 
 
 In your domain provider,update your nameserver based on cloudflare nameserver such as 'sam.ns.cloudflare.com' and 'kack.ns.cloudflare.com'  
 
-hostnamectl set-hostname domain  
+hostnamectl set-hostname DOMAIN  
 
 apt update && apt full-upgrade -y  
 
@@ -150,21 +150,21 @@ curl https://install.yunohost.org | bash
 
 
 After completing the local YunoHost configuration, create the following domains from 'YunoHost>Domains' for the DNS records that we created:  
-AdGuard Home -> ads.domain  
-Element -> chat.domain and Synapse -> syn.domain  
-FressRSS -> rss.domain  
-Gitea -> git.domain  
-Glances -> usage.domain  
-Lime Survey -> forms.domain  
-Lufi -> lufi.domain  
-my_webapp -> domain  
-Nextcloud -> cloud.domain  
-Only Office -> docs.domain  
-Pair Drop -> pair.domain  
-Umami -> visitors.domain  
-Uptime Kuma -> uptime.domain  
-Snappy -> mail.domain  
-Vert -> convert.domain  
+AdGuard Home -> ads.DOMAIN  
+Element -> chat.DOMAIN and Synapse -> syn.DOMAIN  
+FressRSS -> rss.DOMAIN  
+Gitea -> git.DOMAIN  
+Glances -> usage.DOMAIN  
+Lime Survey -> forms.DOMAIN  
+Lufi -> lufi.DOMAIN  
+my_webapp -> DOMAIN  
+Nextcloud -> cloud.DOMAIN  
+Only Office -> docs.DOMAIN  
+Pair Drop -> pair.DOMAIN  
+Umami -> visitors.DOMAIN  
+Uptime Kuma -> uptime.DOMAIN  
+Snappy -> mail.DOMAIN  
+Vert -> convert.DOMAIN  
 
 
 
@@ -184,7 +184,7 @@ my_webapp -> visitors,all_users
 Nextcloud -> visitors,all_users,admins  
 Only Office -> visitors,all_users  
 Pair Drop -> all_users  
-Umami(visitors.domain) -> all_users  
+Umami(visitors.DOMAIN) -> all_users  
 Uptime Kuma -> all_users  
 Snappy -> all_users  
 Vert -> all_users  
@@ -206,13 +206,13 @@ Display tile in portal -> (Yes)
 ✅ Cloudflare proxy is disabled (DNS only).  
 After the nameserver changes have fully propagated,  
 
-sudo yunohost domain cert install  
+sudo yunohost DOMAIN cert install  
 
 
 
 
 # -Web App Ayarlari (Make index work instead of index.html)-  
-sudo nano /etc/nginx/conf.d/domain.d/my_webapp.conf  
+sudo nano /etc/nginx/conf.d/DOMAIN.d/my_webapp.conf  
 index index.php index.html; --> index index.html index.htm;  
 
 try_files $uri $uri/ /index.php?$args =404; --> try_files $uri $uri/ $uri.html =404;  
@@ -238,7 +238,7 @@ location ~ ^/(.+/|)\.(?!well-known/) {
 }
 ```
 
-sudo nano /etc/nginx/conf.d/furk4ngg.me.d/my_webapp.d/custom_headers.conf  
+sudo nano /etc/nginx/conf.d/DOMAIN.d/my_webapp.d/custom_headers.conf  
 ```
 add_header Referrer-Policy "no-referrer-when-downgrade" always;
 add_header Cross-Origin-Opener-Policy "same-origin" always;
@@ -256,34 +256,34 @@ sudo systemctl reload nginx  or  sudo systemctl restart nginx
 
 
 # -AdGuard Home Settings-  
-ads.domain -> all_users  
-ads.domainre:ads.domain/control -> visitors  
-ads.domainre:ads.domain/dns-query -> visitors  
+ads.DOMAIN -> all_users  
+ads.DOMAINre:ads.DOMAIN/control -> visitors  
+ads.DOMAINre:ads.DOMAIN/dns-query -> visitors  
 
 # -Element Settings-  
 Enable fedration features by default -> (Yes)  
-chat.domain -> all_users  
-chat.domain/bundles -> visitors  
+chat.DOMAIN -> all_users  
+chat.DOMAIN/bundles -> visitors  
 
-syn.domain -> all_users  
-syn.domain/_synapse -> visitors  
-syn.domain/livekit -> visitors  
-syn.domain/_matrix -> visitors  
-syn.domain/.well-known/matrix -> visitors  
+syn.DOMAIN -> all_users  
+syn.DOMAIN/_synapse -> visitors  
+syn.DOMAIN/livekit -> visitors  
+syn.DOMAIN/_matrix -> visitors  
+syn.DOMAIN/.well-known/matrix -> visitors  
 
 # -Gitea Settings-  
 Enable LFS support on this instance -> (Yes)  
 Enable support hover SSH protocol -> (Yes)  
-git.domain -> all_users,visitors  
+git.DOMAIN -> all_users,visitors  
 admin -> admins  
-git.domain.megit.furk4ngg.me/v2 -> visitors  
+git.DOMAINgit.DOMAIN/v2 -> visitors  
 
 Get 'Personal access tokens' from Github for clone your repos  
 Github Dashboard>Settings(right top in Profile popup)>Developer Settings(at the bottom)>Personal access tokens>Tokens (classic)>Generate new token (classic)'for general use'>Choose read:org, read:user, repo  and click 'Generate token'  
 
 then  
 
-Go to the git.domain and click '+' icon  
+Go to the git.DOMAIN and click '+' icon  
 
 Access Code: Github Personal access token  
 
@@ -308,8 +308,8 @@ Click Migrate Repository(Depoyu Göç Ettir)
 
 
 # -Lime Survey-  
-forms.domain/admin -> admin page  
-https://forms.domain/index.php/dashboard/view  
+forms.DOMAIN/admin -> admin page  
+https://forms.DOMAIN/index.php/dashboard/view  
 
 # -Lufi Settings-  
 Install Lufi with LDAP configuration? -> (Yes)  
@@ -318,10 +318,10 @@ Install Lufi with LDAP configuration? -> (Yes)
 Add the users' home directory in Nextcloud? -> (No)  
 
 # -Umami Settings-  
-visitors.domain -> all_users  
-visitors.domain/api -> visitors  
-visitors.domain/recorder -> visitors  
-visitors.domain/script -> visitors  
+visitors.DOMAIN -> all_users  
+visitors.DOMAIN/api -> visitors  
+visitors.DOMAIN/recorder -> visitors  
+visitors.DOMAIN/script -> visitors  
 
 # -Uptime Kuma-  
 Choose SQLite database  
@@ -331,8 +331,8 @@ Verify that the server settings were successfully updated
 Check healthcheck and api.js  
 ```
 sudo yunohost service status | grep -i onlyoffice
-curl https://docs.domain/healthcheck
-curl -I https://docs.domain/web-apps/apps/api/documents/api.js
+curl https://docs.DOMAIN/healthcheck
+curl -I https://docs.DOMAIN/web-apps/apps/api/documents/api.js
 ```
 Verify that the secret keys match  
 ```
@@ -342,7 +342,7 @@ sudo grep -n -A5 -B5 "secret" /var/www/onlyoffice/config/local.json
 >        "browser": {  
 >          "string": "secret_key"  
 Paste that key into 'Nextcloud>Administration Settings>ONLYOFFICE'  
->ONLYOFFICE Docs address: https://docs.domain  
+>ONLYOFFICE Docs address: https://docs.DOMAIN  
 >Secret Key: Paste secret_key here
 
 Test>
@@ -354,7 +354,7 @@ php occ config:app:get onlyoffice jwt_secret
 
 Verify the SSL certificate  
 ```
-curl -Iv https://docs.domain
+curl -Iv https://docs.DOMAIN
 ```
 Run the curl tests  
 ```
@@ -398,12 +398,12 @@ CTRL + F5
 # -Mail Settings-  
 (Cloudflare)  
 *All Records should be DNS only*  
-MX domain    mail.domain (Priority 10)  
-TXT domain    "v=spf1 a mx -all"  
+MX DOMAIN    mail.DOMAIN (Priority 10)  
+TXT DOMAIN    "v=spf1 a mx -all"  
 TXT _dmarc    "v=DMARC1; p=none"  
 TXT mail._domainkey    "v=DKIM1; h=sha256; k=rsa; p='long value that you can see in Yunohost>Diagnosis>DNS records screen'"  
-CAA domain    issue "letsencrypt.org"  
-PTR domain    mail.domain  
+CAA DOMAIN    issue "letsencrypt.org"  
+PTR DOMAIN    mail.DOMAIN  
 
 ```
 sudo yunohost diagnosis run  
@@ -415,7 +415,7 @@ sudo yunohost service status | grep -E "postfix|dovecot|rspamd|opendkim"
 
 
 sudo postconf myhostname  
-sudo grep -R "mail.domain" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null
+sudo grep -R "mail.DOMAIN" /etc/opendkim /etc/postfix /etc/dovecot 2>/dev/null
 
 
 Which ports are open? ->  
@@ -433,24 +433,24 @@ sudo ss -tln | grep -E ":25|:465|:587"
 
 Is STARTTLS actually working? ->  
 SMTP  
-openssl s_client -starttls smtp -connect domain:587  
+openssl s_client -starttls smtp -connect DOMAIN:587  
 >Verify return code: 0 (ok)
 
 IMAP  
-openssl s_client -connect domain:993  
-openssl s_client -starttls imap -connect domain:143  
+openssl s_client -connect DOMAIN:993  
+openssl s_client -starttls imap -connect DOMAIN:143  
 
 
 Is SMTP Authentication working ->  
 ```
-doveadm auth test furk4ngg@domain
+doveadm auth test furk4ngg@DOMAIN
 ```
 >auth succeeded
 
 
 Can LDAP see the email address? ->  
 ```
-postmap -q "furk4ngg@domain" ldap:/etc/postfix/ldap-accounts.cf  
+postmap -q "furk4ngg@DOMAIN" ldap:/etc/postfix/ldap-accounts.cf  
 ```
 
 
@@ -458,14 +458,14 @@ What is the mail server hostname? ->
 ```
 sudo postconf myhostname  
 ```
->myhostname = domain
+>myhostname = DOMAIN
 
 
 Verify the mail domains ->  
 ```
 sudo yunohost user info furk4ngg  
 ```
->mail:furk4ngg@domain
+>mail:furk4ngg@DOMAIN
 
 
 Which domains accept mail? ->  
@@ -477,12 +477,12 @@ Show the dedicated sender addresses used by applications (Nextcloud, Synapse, et
 sudo postmap -s /etc/postfix/app_senders_login_maps  
 
 ## IMAP SETTINGS
->Admin page -> https://mail.domain/app/?admin  
+>Admin page -> https://mail.DOMAIN/app/?admin  
 >username:admin  
 >password:/var/www/snappymail/app/data/_data_/_default_/admin_password.txt
 
 
-Server: domain  
+Server: DOMAIN  
 
 Port: 993  
 
@@ -498,7 +498,7 @@ Allow self signed: OFF
 
 
 ## SMTP SETTINGS
-Server: domain  
+Server: DOMAIN  
 
 Port: 587  
 
@@ -523,11 +523,11 @@ Allow self signed: OFF
 
 ## DKIM 1024-bit warning (Upgrade the key to 2048-bit, as preferred by major email providers)  
 
-sudo opendkim-testkey -d domain -s mail -vvv  
+sudo opendkim-testkey -d DOMAIN -s mail -vvv  
 1048 bit starts with MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ...  
 2048 bit starts with MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...  
 
-openssl pkey -in /etc/dkim/domain.mail.key -text -noout | grep "Private-Key"  
+openssl pkey -in /etc/dkim/DOMAIN.mail.key -text -noout | grep "Private-Key"  
 >Private-Key: (1024 bit, 2 primes)  
 
 - Verify your mail configuration  
@@ -535,7 +535,7 @@ Before upgrading your DKIM key, verify the following settings
 
 System Hostname  
 hostnamectl --static  
->domain  
+>DOMAIN  
 
 Postfix Hostname  
 postconf myhostname  
@@ -543,14 +543,14 @@ postconf myhostname
 
 MX record  
 dig @1.1.1.1 MX example.com +short  
->10 mail.domain.  
+>10 mail.DOMAIN.  
 
 A record  
-dig @1.1.1.1 mail.domain A +short  
+dig @1.1.1.1 mail.DOMAIN A +short  
 >VPS's IPV4 Address  
 
 AAAA record  
-dig @1.1.1.1 mail.domain AAAA +short  
+dig @1.1.1.1 mail.DOMAIN AAAA +short  
 >VPS's IPV6 Address  
 
 
@@ -561,15 +561,15 @@ dig @1.1.1.1 mail.domain AAAA +short
 
 and YunoHost Diagnosis still reports a hostname/EHLO warning, don't panic.  
 
-This is a common and valid mail server configuration. Using mail.example.com for SMTP while keeping the system hostname as the root domain (example.com) does not, by itself, cause mail delivery problems.  
+This is a common and valid mail server configuration. Using mail.example.com for SMTP while keeping the system hostname as the root DOMAIN (example.com) does not, by itself, cause mail delivery problems.  
 
 If Mail Tester reports SPF, DKIM, DMARC, and Reverse DNS as valid, you can safely continue with the DKIM 2048-bit upgrade.  
 
 
 Back up the existing key  
 ```
-sudo cp -a /etc/dkim/domain.mail.key \
-/etc/dkim/domain.mail.key.bak
+sudo cp -a /etc/dkim/DOMAIN.mail.key \
+/etc/dkim/DOMAIN.mail.key.bak
 ```
 
 Generate a new 2048-bit key  
@@ -578,7 +578,7 @@ sudo opendkim-genkey \
 -b 2048 \
 -r \
 -s mail \
--d domain
+-d DOMAIN
 ```
 ls  
 >mail.private  
@@ -587,9 +587,9 @@ ls
 
 Replace the private key  
 ```
-sudo mv mail.private /etc/dkim/domain.mail.key  
-sudo chown opendkim:root /etc/dkim/domain.mail.key  
-sudo chmod 600 /etc/dkim/domain.mail.key  
+sudo mv mail.private /etc/dkim/DOMAIN.mail.key  
+sudo chown opendkim:root /etc/dkim/DOMAIN.mail.key  
+sudo chmod 600 /etc/dkim/DOMAIN.mail.key  
 ```
 
 Update the DNS record  
@@ -617,7 +617,7 @@ sudo systemctl restart opendkim
 Verify the key  
 ```
 sudo opendkim-testkey \
--d domain \
+-d DOMAIN \
 -s mail \
 -v
 ```
@@ -647,30 +647,30 @@ Web Page Quality -> https://pagespeed.web.dev/
 
 
 ## If its all good  
-Create a new account named dmarc@domain in YunoHost.  
-TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@domain; adkim=s; aspf=s; pct=100"  
+Create a new account named dmarc@DOMAIN in YunoHost.  
+TXT _dmarc "v=DMARC1; p=reject; rua=mailto:dmarc@DOMAIN; adkim=s; aspf=s; pct=100"  
 Test it -> https://easydmarc.com/tools/dmarc-lookup  
 
 
-In your Server Hosting change (Reverse DNS Management>PTR Records(IPV4 to mail.domain / IPV6 to mail.domain))  
+In your Server Hosting change (Reverse DNS Management>PTR Records(IPV4 to mail.DOMAIN / IPV6 to mail.DOMAIN))  
 
 sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak  
 export TERM=xterm-256color  
-sudo vim /etc/postfix/main.cf > myhostname = mail.domain  
+sudo vim /etc/postfix/main.cf > myhostname = mail.DOMAIN  
 
 
 sudo postconf myhostname  
->myhostname = mail.domain  
+>myhostname = mail.DOMAIN  
 
-openssl s_client -starttls smtp -connect mail.domain:587  
+openssl s_client -starttls smtp -connect mail.DOMAIN:587  
 Type>EHLO test 
->250-mail.domain  
+>250-mail.DOMAIN  
 
 PTR Test  
 dig -x <IPv4> +short  
->mail.domain  
+>mail.DOMAIN  
 
-If all three point to mail.domain, the mail configuration is fully consistent.
+If all three point to mail.DOMAIN, the mail configuration is fully consistent.
 
 
 
@@ -680,7 +680,7 @@ You can connect and use your mail with these mail providers:Thunderbird,Gmail,Ou
 
 ## Add a mail Alias  
 If you don't want to share your primary email address, you can create aliases for different services.  
-Yunohost>Users>user>edit user's account>'brand@domain' add a mail alias then messages sent to brand@domain address are delivered to: user@domain  
+Yunohost>Users>user>edit user's account>'brand@DOMAIN' add a mail alias then messages sent to brand@DOMAIN address are delivered to: user@DOMAIN  
 
 # 📦 Wireguard VPN Setup
 ❌ In my opinion, this is not anonymity, since all tunnel traffic exits through a single VPS IP address  
@@ -1449,7 +1449,7 @@ What Is My Ip Adress -> https://ifconfig.me/
 
 Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other third-party content blocker if the login page does not load correctly  
 
-Login Page -> https://ads.domain/login.html  
+Login Page -> https://ads.DOMAIN/login.html  
 
 # DIAGRAM
 
