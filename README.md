@@ -281,6 +281,16 @@ git.domain.megit.furk4ngg.me/v2 -> visitors
 Get 'Personal access tokens' from Github for clone your repos  
 Github Dashboard>Settings(right top in Profile popup)>Developer Settings(at the bottom)>Personal access tokens>Tokens (classic)>Generate new token (classic)'for general use'>Choose read:org, read:user, repo  and click 'Generate token'  
 
+then  
+
+Go to the git.domain and click '+' icon  
+New Repository(Yeni Depo) -> Create new repo from scratch  
+New Migration(Yeni Göç) -> Used to move or copy an existing project  
+
+Migrate from GitHub:  
+Migration Options [] This repository will be a mirror  
+>If enabled, you won't be able to make changes directly in your Gitea repository. Any changes made to the GitHub repository will be automatically synchronized to the Gitea repository.  
+
 
 # -Lime Survey-  
 forms.domain/admin -> admin page  
