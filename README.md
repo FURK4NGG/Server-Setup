@@ -296,6 +296,16 @@ Migration Options
 
 >If enabled, you won't be able to make changes directly in your Gitea repository. Any changes made to the GitHub repository will be automatically synchronized to the Gitea repository.  
 
+Migration Items(Göç Öğeleri):  
+- [x] Wiki(Viki)
+- [x] Labels(Etiketler)
+- [x] Topics(Konular)
+- [x] Pull Requests(Değişiklik İstekleri)
+- [x] Releases(Sürümler)
+- [x] Milestones(Dönüm noktaları)
+
+Migrate Repository(Depoyu Göç Ettir)  
+
 
 # -Lime Survey-  
 forms.domain/admin -> admin page  
