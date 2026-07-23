@@ -1149,15 +1149,17 @@ sudo apt install apache2-utils
 sudo grep -A4 '^users:' /var/www/adguardhome/AdGuardHome.yaml  
 >Should see current user
 
-New Password
-```
-htpasswd -B -C 10 -n -b USERNAME 'NEW_PASSWORD'
-```
->USERNAME:$2y$10$...
-
 ```
 sudo systemctl stop adguardhome  
 ```
+
+New Password  
+```
+htpasswd -B -C 10 -n -b USERNAME 'NEW_PASSWORD'
+```
+>USERNAME:HASH(looks like $2y$10$...)
+
+
 
 sudo cp /var/www/adguardhome/AdGuardHome.yaml \  
 /var/www/adguardhome/AdGuardHome.yaml.bak  
@@ -1167,7 +1169,7 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 Replace only the password: value in the following section:  
 >users:  
 >name: USERNAME  
->password: $2y$10$...  
+>password: paste the HASH($2y$10$...  )  
 
 (VPS)  
 Restart AdGuard Home  
