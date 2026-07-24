@@ -1458,6 +1458,22 @@ Login Page -> https://ads.DOMAIN/login.html
 sudo yunohost backup create --name full-backup-$(date +%Y%m%d-%H%M%S) --debug
 ```
 
+Test>  
+```
+sudo yunohost backup list
+```
+>archives: full-backup-20260724-212342  
+
+Backup Details  
+```
+full-backup-20260724-212342
+```
+>created_at: 2026-07-24 21:23:42  
+>description:  
+>path: /home/yunohost.backup/archives/full-backup-20260724-212342.tar  
+>size: 8526044332  
+
+
 # DIAGRAM
 
 Client  
