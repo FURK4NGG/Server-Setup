@@ -1466,7 +1466,7 @@ sudo yunohost backup list
 
 Backup Details  
 ```
-full-backup-20260724-212342
+sudo yunohost backup info full-backup-20260724-212342
 ```
 >created_at: 2026-07-24 21:23:42  
 >description:  
