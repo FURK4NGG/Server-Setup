@@ -1453,6 +1453,11 @@ Disable uBlock Origin, AdGuard Browser Extension, Brave Shields, or any other th
 
 Login Page -> https://ads.DOMAIN/login.html  
 
+# SERVER BACKUP
+```
+sudo yunohost backup create --name full-backup-$(date +%Y%m%d-%H%M%S) --debug
+```
+
 # DIAGRAM
 
 Client  
