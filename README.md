@@ -13,8 +13,9 @@ This repository helps you build a complete self-hosted environment on your own V
 
 
 
-*Terminal icerisinde yukari asagi yapmak icin 'Shift+Page_Up' ve 'Shift+Page_Down' tuslarini kullanabilirsin*  
-*'sudo dmesg -D' kodu ile terminale yazirilan auid yazilarini o oturum icin kisa sureli durdurur*  
+*Inside the terminal, use 'Shift+Page_Up' and 'Shift+Page_Down' to scroll up and down*  
+*Run 'sudo dmesg -D' to temporarily suppress the audit (auid) messages printed in the terminal for the current session*  
+
 
 BASE(Yunohost)  
 
