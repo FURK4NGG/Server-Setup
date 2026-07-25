@@ -1176,7 +1176,13 @@ sudo nano /var/www/adguardhome/AdGuardHome.yaml
 Replace only the password: value in the following section:  
 >users:  
 >name: USERNAME  
->password: paste the HASH($2y$10$...  )  
+>password: paste the HASH($2y$10$...)  
+
+```
+sudo yunohost app setting adguardhome password -v '$2y$10$...'
+```
+sudo yunohost app setting adguardhome password  
+>$2y$10$...  
 
 (VPS)  
 Restart AdGuard Home  
