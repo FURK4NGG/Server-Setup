@@ -3,7 +3,13 @@
 This repository helps you build a complete self-hosted environment on your own VPS or home server. Replace your dependence on third-party cloud services such as Gmail, Google Drive, Dropbox, and similar platforms by hosting your own secure alternatives under your control. Host your own file server, Git repositories, video conferencing platform, online office suite, RSS reader, file sharing service, uptime monitoring, forms, synchronization tools, email server, VPN server, and many other applications—all on infrastructure that you own and control.  
 
 
-![Server-Setup Demo Image]()
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-1.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-2.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-3.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-4.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-5.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-6.webp)
+![Server-Setup Demo Image](https://github.com/FURK4NGG/Server-Setup/blob/main/%7B%7D/server-setup-7.webp)
 
 
 
