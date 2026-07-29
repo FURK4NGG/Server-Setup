@@ -56,7 +56,7 @@ Reconnect after the reboot:
 ssh root@SERVER_IP  
 
 
-*Optional: Connect through VNC* {  
+*Optional(Not recommended because you cannot copy and paste between the VNC session and your PC): Connect through VNC* {  
 vncviewer VNC_IP:VNC_PORT  
 enter the vnc password(max 8 character)  
 
