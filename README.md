@@ -1436,6 +1436,13 @@ mailq
 sudo systemctl status dnsmasq  
 >active (running)  
 
+## Close autoconnection after reboot (PC)  
+```
+nmcli connection modify wg0 connection.autoconnect no
+```
+nmcli connection show wg0 | grep connection.autoconnect  
+>connection.autoconnect: no(hayır)  
+
 
 ## Make nftables rules persistent (VPS)  
 
